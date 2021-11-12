@@ -1,1 +1,1 @@
-# Text_Sentiment_Analyzer
+# Journal_App
