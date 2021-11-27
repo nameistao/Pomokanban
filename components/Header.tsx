@@ -1,3 +1,24 @@
-const Header = () => {};
+import styled from "styled-components";
+
+import Title from "components/headerComponents/Title";
+import ButtonGroup from "components/headerComponents/ButtonGroup";
+
+const StyledSection = styled.section`
+  width: 60vw;
+  height: 15vh;
+  margin: 0 auto 0 auto;
+  background: blue;
+  color: #fff;
+  display: flex;
+`;
+
+const Header = () => {
+  return (
+    <StyledSection>
+      <Title />
+      <ButtonGroup />
+    </StyledSection>
+  );
+};
 
 export default Header;
