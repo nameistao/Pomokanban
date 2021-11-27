@@ -7,7 +7,6 @@ const StyledSection = styled.section`
   width: 60vw;
   height: 15vh;
   margin: 0 auto 0 auto;
-  background: blue;
   color: #fff;
   display: flex;
 `;

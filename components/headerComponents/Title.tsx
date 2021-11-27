@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const StyledTitle = styled.header`
@@ -7,10 +8,26 @@ const StyledTitle = styled.header`
   display: flex;
   align-items: center;
   font-size: 40px;
+  padding-left: 10%;
+  text-align: center;
 `;
 
 const Title = () => {
-  return <StyledTitle>Pomodororo</StyledTitle>;
+  const [hoverHeader, setHoverHeader] = useState(false);
+
+  const hoverHandler = () => {
+    setHoverHeader(true);
+  };
+
+  const unhoverHandler = () => {
+    setHoverHeader(false);
+  };
+
+  return (
+    <StyledTitle onMouseEnter={hoverHandler} onMouseLeave={unhoverHandler}>
+      {hoverHeader ? "GitHub" : "Pomodororo"}
+    </StyledTitle>
+  );
 };
 
 export default Title;
