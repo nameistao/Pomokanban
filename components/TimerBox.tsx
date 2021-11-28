@@ -19,13 +19,14 @@ const StyledSection = styled.section`
 interface IProps {
   startStop: string;
   startStopHandler: MouseEventHandler;
+  remainder: number;
 }
 
-const TimerBox = ({ startStop, startStopHandler }: IProps) => {
+const TimerBox = ({ startStop, startStopHandler, remainder }: IProps) => {
   return (
     <StyledSection>
       <TimerOptions />
-      <Timer />
+      <Timer remainder={remainder} />
       <StartStopButton
         startStop={startStop}
         startStopHandler={startStopHandler}

@@ -13,10 +13,16 @@ const StyledTimer = styled.div`
   font-size: 10rem;
 `;
 
-const Timer = () => {
+interface IProps {
+  remainder: number;
+}
+
+const Timer = ({ remainder }: IProps) => {
   return (
     <StyledTimerWrapper>
-      <StyledTimer>25:00</StyledTimer>
+      <StyledTimer>
+        {Math.floor(remainder / 60)}:{Math.floor(remainder % 60)}
+      </StyledTimer>
     </StyledTimerWrapper>
   );
 };

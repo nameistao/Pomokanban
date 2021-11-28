@@ -17,12 +17,12 @@ const StyledMain = styled.main`
 
 const Home: NextPage = () => {
   //hooks
-  const [progress, setProgress] = useState(75);
+  const [progress, setProgress] = useState(0);
   const [startStop, setStartStop] = useState("START");
-  //remaining time in minutes
-  const [remainder, setRemainder] = useState(25);
-  //total time in minutes
-  const [total, setTotal] = useState(25);
+  //remaining time in seconds
+  const [remainder, setRemainder] = useState(25 * 60);
+  //total time in seconds
+  const [total, setTotal] = useState(25 * 60);
   //updated only when the start button is used
   const [endTime, setEndTime] = useState(0);
   //for tracking intervalId
@@ -34,16 +34,17 @@ const Home: NextPage = () => {
       setStartStop("STOP");
 
       //get end time given remaining time and now time
-      const end = new Date(new Date().getTime() + remainder * 60000);
+      const end = new Date(new Date().getTime() + (remainder / 60) * 60000);
 
       const interval = window.setInterval(() => {
         //get and update remaining time
         let diff = end.getTime() - new Date().getTime();
-        console.log(diff / 1000);
-        console.log("seconds", Math.floor(diff / 1000));
+        //console.log(diff / 1000);
+        console.log("seconds", Math.floor((diff / 1000) % 60));
         console.log("minutes", Math.floor(diff / 1000 / 60));
 
-        //update timer
+        //update remainder with seconds remaining
+        setRemainder(diff / 1000);
 
         //move progress bar
 
@@ -70,7 +71,11 @@ const Home: NextPage = () => {
         onLoaderFinished={() => setProgress(0)}
       />
       <Header />
-      <TimerBox startStop={startStop} startStopHandler={startStopHandler} />
+      <TimerBox
+        startStop={startStop}
+        startStopHandler={startStopHandler}
+        remainder={remainder}
+      />
       <Tasks />
     </StyledMain>
   );
