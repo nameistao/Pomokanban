@@ -23,7 +23,6 @@ const Home: NextPage = () => {
 
   const startStopHandler = () => {
     const end = new Date(new Date().getTime() + 1 * 60000);
-    alert(new Date(new Date().getTime() + 25 * 60000).toLocaleTimeString());
     console.log(end.getTime());
     const interval = setInterval(() => {
       let diff = end.getTime() - new Date().getTime();
