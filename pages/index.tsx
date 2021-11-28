@@ -18,9 +18,28 @@ const StyledMain = styled.main`
 const Home: NextPage = () => {
   const [progress, setProgress] = useState(75);
   const [startStop, setStartStop] = useState("stop");
+  const [remainder, setRemainder] = useState(25 * 60);
+  const [endTime, setEndTime] = useState(0);
 
   const startStopHandler = () => {
-    setProgress(progress + 1);
+    const end = new Date(new Date().getTime() + 1 * 60000);
+    alert(new Date(new Date().getTime() + 25 * 60000).toLocaleTimeString());
+    console.log(end.getTime());
+    const interval = setInterval(() => {
+      let diff = end.getTime() - new Date().getTime();
+      console.log(diff);
+
+      if (diff < 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+    // if (startStop === "stop") {
+    //   setEndTime(new Date().getTime());
+
+    //   setStartStop("start");
+    // } else {
+    //   setStartStop("stop");
+    // }
   };
 
   return (
