@@ -21,10 +21,8 @@ const Home: NextPage = () => {
   const [startStop, setStartStop] = useState("START");
   //remaining time in seconds
   const [remainder, setRemainder] = useState(25 * 60);
-  //total time in seconds
+  //total time in seconds, only changed by settings and buttons
   const [total, setTotal] = useState(25 * 60);
-  //updated only when the start button is used
-  const [endTime, setEndTime] = useState(0);
   //for tracking intervalId
   const [intervalId, setIntervalId] = useState(0);
 
@@ -40,13 +38,15 @@ const Home: NextPage = () => {
         //get and update remaining time
         let diff = end.getTime() - new Date().getTime();
         //console.log(diff / 1000);
-        console.log("seconds", Math.floor((diff / 1000) % 60));
-        console.log("minutes", Math.floor(diff / 1000 / 60));
+        //console.log("seconds", Math.floor((diff / 1000) % 60));
+        //console.log("minutes", Math.floor(diff / 1000 / 60));
 
         //update remainder with seconds remaining
         setRemainder(diff / 1000);
-
         //move progress bar
+        console.log(diff / 1000);
+        console.log(total);
+        setProgress((1 - diff / 1000 / total) * 100);
 
         //if timer is up, end interval
         if (diff < 0) {
