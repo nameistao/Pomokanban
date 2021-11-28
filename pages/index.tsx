@@ -17,6 +17,11 @@ const StyledMain = styled.main`
 
 const Home: NextPage = () => {
   const [progress, setProgress] = useState(75);
+  const [startStop, setStartStop] = useState("stop");
+
+  const startStopHandler = () => {
+    setProgress(progress + 1);
+  };
 
   return (
     <StyledMain>
@@ -26,7 +31,7 @@ const Home: NextPage = () => {
         onLoaderFinished={() => setProgress(0)}
       />
       <Header />
-      <TimerBox />
+      <TimerBox startStopHandler={startStopHandler} />
       <Tasks />
     </StyledMain>
   );
