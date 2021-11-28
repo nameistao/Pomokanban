@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TimerOptions from "components/timerBoxComponents/TimerOptions";
 import Timer from "components/timerBoxComponents/Timer";
 import StartStopButton from "./timerBoxComponents/StartStopButton";
+import { start } from "repl";
 
 const StyledSection = styled.section`
   height: 35vh;
@@ -16,15 +17,19 @@ const StyledSection = styled.section`
 `;
 
 interface IProps {
+  startStop: string;
   startStopHandler: MouseEventHandler;
 }
 
-const TimerBox = ({ startStopHandler }: IProps) => {
+const TimerBox = ({ startStop, startStopHandler }: IProps) => {
   return (
     <StyledSection>
       <TimerOptions />
       <Timer />
-      <StartStopButton />
+      <StartStopButton
+        startStop={startStop}
+        startStopHandler={startStopHandler}
+      />
     </StyledSection>
   );
 };

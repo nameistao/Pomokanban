@@ -16,29 +16,50 @@ const StyledMain = styled.main`
 `;
 
 const Home: NextPage = () => {
+  //hooks
   const [progress, setProgress] = useState(75);
-  const [startStop, setStartStop] = useState("stop");
-  const [remainder, setRemainder] = useState(25 * 60);
+  const [startStop, setStartStop] = useState("START");
+  //remaining time in minutes
+  const [remainder, setRemainder] = useState(25);
+  //total time in minutes
+  const [total, setTotal] = useState(25);
+  //updated only when the start button is used
   const [endTime, setEndTime] = useState(0);
+  //for tracking intervalId
+  const [intervalId, setIntervalId] = useState(0);
 
   const startStopHandler = () => {
-    const end = new Date(new Date().getTime() + 1 * 60000);
-    console.log(end.getTime());
-    const interval = setInterval(() => {
-      let diff = end.getTime() - new Date().getTime();
-      console.log(diff);
+    if (startStop === "START") {
+      //change button text to STOP
+      setStartStop("STOP");
 
-      if (diff < 0) {
-        clearInterval(interval);
-      }
-    }, 1000);
-    // if (startStop === "stop") {
-    //   setEndTime(new Date().getTime());
+      //get end time given remaining time and now time
+      const end = new Date(new Date().getTime() + remainder * 60000);
 
-    //   setStartStop("start");
-    // } else {
-    //   setStartStop("stop");
-    // }
+      const interval = window.setInterval(() => {
+        //get and update remaining time
+        let diff = end.getTime() - new Date().getTime();
+        console.log(diff / 1000);
+        console.log("seconds", Math.floor(diff / 1000));
+        console.log("minutes", Math.floor(diff / 1000 / 60));
+
+        //update timer
+
+        //move progress bar
+
+        //if timer is up, end interval
+        if (diff < 0) {
+          clearInterval(interval);
+        }
+      }, 1000);
+
+      setIntervalId(interval);
+    } else {
+      //change button text to START
+      setStartStop("START");
+      //stop progress bar & timer
+      clearInterval(intervalId);
+    }
   };
 
   return (
@@ -49,7 +70,7 @@ const Home: NextPage = () => {
         onLoaderFinished={() => setProgress(0)}
       />
       <Header />
-      <TimerBox startStopHandler={startStopHandler} />
+      <TimerBox startStop={startStop} startStopHandler={startStopHandler} />
       <Tasks />
     </StyledMain>
   );

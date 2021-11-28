@@ -1,28 +1,41 @@
+import { MouseEventHandler } from "react";
 import styled from "styled-components";
 
 const StyledStartStopButtonWrapper = styled.section`
   width: 100%;
   height: 30%;
-  background: purple;
   text-align: center;
   display: flex;
   align-items: center;
 `;
 
 const StyledStartStopButton = styled.button`
-  width: 40%;
-  height: 20%;
+  width: 80%;
+  height: 75%;
   margin: auto;
   border-radius: 7.5px;
   background-color: inherit;
   border: 1px #fff solid;
+  color: #fff;
+  :hover {
+    background-color: #fff;
+    cursor: pointer;
+    color: black;
+  }
 `;
 
-const StartStopButton = () => {
+interface IProps {
+  startStop: string;
+  startStopHandler: MouseEventHandler;
+}
+
+const StartStopButton = ({ startStop, startStopHandler }: IProps) => {
   return (
-    <StyledStartStopButton>
-      <button>start</button>
-    </StyledStartStopButton>
+    <StyledStartStopButtonWrapper>
+      <StyledStartStopButton onClick={startStopHandler}>
+        {startStop}
+      </StyledStartStopButton>
+    </StyledStartStopButtonWrapper>
   );
 };
 
