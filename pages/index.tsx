@@ -68,22 +68,35 @@ const Home: NextPage = () => {
   };
 
   return (
-    <StyledMain color={colorScheme[1]}>
-      <LoadingBar
-        color="#fff"
-        progress={progress}
-        onLoaderFinished={() => setProgress(0)}
-      />
-      <Header />
-      <TimerBox
-        colorScheme={colorScheme}
-        setColorScheme={setColorScheme}
-        startStop={startStop}
-        startStopHandler={startStopHandler}
-        remainder={remainder}
-      />
-      <Tasks />
-    </StyledMain>
+    <>
+      <Head>
+        <title>
+          {Math.floor(remainder / 60) +
+            ":" +
+            (Math.floor(remainder % 60) < 10
+              ? "0" + Math.floor(remainder % 60)
+              : Math.floor(remainder % 60)) +
+            " - Pomodororo"}
+        </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <StyledMain color={colorScheme[1]}>
+        <LoadingBar
+          color="#fff"
+          progress={progress}
+          onLoaderFinished={() => setProgress(0)}
+        />
+        <Header />
+        <TimerBox
+          colorScheme={colorScheme}
+          setColorScheme={setColorScheme}
+          startStop={startStop}
+          startStopHandler={startStopHandler}
+          remainder={remainder}
+        />
+        <Tasks />
+      </StyledMain>
+    </>
   );
 };
 
