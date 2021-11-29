@@ -12,7 +12,7 @@ import styled from "styled-components";
 const StyledMain = styled.main`
   height: 100vh;
   width: 100vw;
-  background: #2f806d;
+  background: ${(props) => props.color};
 `;
 
 const Home: NextPage = () => {
@@ -25,6 +25,12 @@ const Home: NextPage = () => {
   const [total, setTotal] = useState(25 * 60);
   //for tracking intervalId
   const [intervalId, setIntervalId] = useState(0);
+  //color scheme
+  const [colorScheme, setColorScheme] = useState([
+    "pomodoro",
+    "rgb(47, 128, 109)",
+    "rgb(55, 149, 127)",
+  ]);
 
   const startStopHandler = () => {
     if (startStop === "START") {
@@ -44,15 +50,13 @@ const Home: NextPage = () => {
         //update remainder with seconds remaining
         setRemainder(diff / 1000);
         //move progress bar
-        console.log(diff / 1000);
-        console.log(total);
         setProgress((1 - diff / 1000 / total) * 100);
 
         //if timer is up, end interval
         if (diff < 0) {
           clearInterval(interval);
         }
-      }, 1000);
+      }, 500);
 
       setIntervalId(interval);
     } else {
@@ -64,7 +68,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <StyledMain>
+    <StyledMain color={colorScheme[1]}>
       <LoadingBar
         color="#fff"
         progress={progress}
@@ -72,6 +76,8 @@ const Home: NextPage = () => {
       />
       <Header />
       <TimerBox
+        colorScheme={colorScheme}
+        setColorScheme={setColorScheme}
         startStop={startStop}
         startStopHandler={startStopHandler}
         remainder={remainder}

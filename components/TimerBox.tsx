@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { Dispatch, MouseEventHandler } from "react";
 import styled from "styled-components";
 import TimerOptions from "components/timerBoxComponents/TimerOptions";
 import Timer from "components/timerBoxComponents/Timer";
@@ -10,22 +10,30 @@ const StyledSection = styled.section`
   width: 60vw;
   color: #fff;
   margin: 0 auto 0 auto;
-  background: #37957f;
+  background: ${(props) => props.color};
   border-radius: 20px;
   display: flex;
   flex-direction: column;
 `;
 
 interface IProps {
+  colorScheme: Array<string>;
+  setColorScheme: Dispatch<any>;
   startStop: string;
   startStopHandler: MouseEventHandler;
   remainder: number;
 }
 
-const TimerBox = ({ startStop, startStopHandler, remainder }: IProps) => {
+const TimerBox = ({
+  colorScheme,
+  setColorScheme,
+  startStop,
+  startStopHandler,
+  remainder,
+}: IProps) => {
   return (
-    <StyledSection>
-      <TimerOptions />
+    <StyledSection color={colorScheme[2]}>
+      <TimerOptions setColorScheme={setColorScheme} />
       <Timer remainder={remainder} />
       <StartStopButton
         startStop={startStop}
