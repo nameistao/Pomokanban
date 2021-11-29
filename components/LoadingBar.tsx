@@ -5,7 +5,7 @@ const StyledLoadingBar = styled.section`
   height: 2.5vh;
 `;
 
-const StyledProgressBar = styled.section`
+const StyledProgressBar = styled.section<{ barWidth: string }>`
   position: fixed;
   background: #fff;
   width: ${(props) => props.barWidth};
