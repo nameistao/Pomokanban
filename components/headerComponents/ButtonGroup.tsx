@@ -37,16 +37,24 @@ const StyledAccountButton = styled.button`
   border-bottom-right-radius: 7.5px;
 `;
 
-const ButtonGroup = () => {
+interface IProps {
+  setShowModal: Function;
+}
+
+const ButtonGroup = ({ setShowModal }: IProps) => {
+  const buttonHandler = (modalType) => {
+    setShowModal(modalType);
+  };
+
   return (
     <StyledButtonGroup>
-      <StyledInfoButton>
+      <StyledInfoButton onClick={() => buttonHandler("info")}>
         <Info height={"75%"} />
       </StyledInfoButton>
-      <StyledSettingsButton>
+      <StyledSettingsButton onClick={() => buttonHandler("settings")}>
         <Settings height={"75%"} />
       </StyledSettingsButton>
-      <StyledAccountButton>
+      <StyledAccountButton onClick={() => buttonHandler("user")}>
         <User height={"75%"} />
       </StyledAccountButton>
     </StyledButtonGroup>

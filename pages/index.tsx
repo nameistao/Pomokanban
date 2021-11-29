@@ -92,7 +92,7 @@ const Home: NextPage = () => {
       </Head>
       <StyledMain color={colorScheme[0]}>
         <LoadingBar progress={progress} />
-        <Header />
+        <Header setShowModal={setShowModal} />
         {showModal === "info" && <InfoModal />}
         {showModal === "settings" && <SettingsModal />}
         {showModal === "user" && <UserModal />}

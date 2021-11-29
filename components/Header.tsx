@@ -11,11 +11,15 @@ const StyledSection = styled.section`
   display: flex;
 `;
 
-const Header = () => {
+interface IProps {
+  setShowModal: Function;
+}
+
+const Header = ({ setShowModal }: IProps) => {
   return (
     <StyledSection>
       <Title />
-      <ButtonGroup />
+      <ButtonGroup setShowModal={setShowModal} />
     </StyledSection>
   );
 };
