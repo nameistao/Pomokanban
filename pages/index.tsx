@@ -7,6 +7,9 @@ import LoadingBar from "components/LoadingBar";
 import Header from "components/Header";
 import TimerBox from "components/TimerBox";
 import Tasks from "components/Tasks";
+import InfoModal from "components/modals/InfoModal";
+import SettingsModal from "components/modals/SettingsModal";
+import UserModal from "components/modals/UserModal";
 import styled from "styled-components";
 
 const StyledMain = styled.main`
@@ -35,6 +38,8 @@ const Home: NextPage = () => {
     "rgb(47, 128, 109)",
     "rgb(55, 149, 127)",
   ]);
+  //show modals
+  const [showModal, setShowModal] = useState("");
 
   //updating progress bar
   useEffect(() => {
@@ -75,33 +80,41 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>
-          {Math.floor(remainder / 60) +
-            ":" +
-            (Math.floor(remainder % 60) < 10
-              ? "0" + Math.floor(remainder % 60)
-              : Math.floor(remainder % 60)) +
-            " - Pomodororo"}
+          {(remainder < 0
+            ? "0:00"
+            : Math.floor(remainder / 60) +
+              ":" +
+              (Math.floor(remainder % 60) < 10
+                ? "0" + Math.floor(remainder % 60)
+                : Math.floor(remainder % 60))) + " - Pomodororo"}
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <StyledMain color={colorScheme[0]}>
         <LoadingBar progress={progress} />
         <Header />
-        <TimerBox
-          colorScheme={colorScheme}
-          setColorScheme={setColorScheme}
-          startStop={startStop}
-          startStopHandler={startStopHandler}
-          remainder={remainder}
-          setRemainder={setRemainder}
-          timers={timers}
-          curTimer={curTimer}
-          setCurTimer={setCurTimer}
-          intervalId={intervalId}
-          setTotal={setTotal}
-          setStartStop={setStartStop}
-        />
-        <Tasks />
+        {showModal === "info" && <InfoModal />}
+        {showModal === "settings" && <SettingsModal />}
+        {showModal === "user" && <UserModal />}
+        {showModal === "" && (
+          <>
+            <TimerBox
+              colorScheme={colorScheme}
+              setColorScheme={setColorScheme}
+              startStop={startStop}
+              startStopHandler={startStopHandler}
+              remainder={remainder}
+              setRemainder={setRemainder}
+              timers={timers}
+              curTimer={curTimer}
+              setCurTimer={setCurTimer}
+              intervalId={intervalId}
+              setTotal={setTotal}
+              setStartStop={setStartStop}
+            />
+            <Tasks />
+          </>
+        )}
       </StyledMain>
     </>
   );
