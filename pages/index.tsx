@@ -52,9 +52,6 @@ const Home: NextPage = () => {
       const interval = window.setInterval(() => {
         //get and update remaining time
         let diff = end.getTime() - new Date().getTime();
-        //console.log(diff / 1000);
-        //console.log("seconds", Math.floor((diff / 1000) % 60));
-        //console.log("minutes", Math.floor(diff / 1000 / 60));
 
         //update remainder with seconds remaining
         setRemainder(diff / 1000);

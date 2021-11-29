@@ -25,7 +25,17 @@ const Title = () => {
 
   return (
     <StyledTitle onMouseEnter={hoverHandler} onMouseLeave={unhoverHandler}>
-      {hoverHeader ? "GitHub" : "Pomodororo"}
+      {hoverHeader ? (
+        <a
+          href="https://github.com/nameistao/Pomodororo_V2"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          GitHub
+        </a>
+      ) : (
+        "Pomodororo"
+      )}
     </StyledTitle>
   );
 };

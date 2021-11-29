@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import Info from "components/icons/Info";
+import Settings from "components/icons/Settings";
+import User from "components/icons/User";
 
 const StyledButtonGroup = styled.div`
-  height: 50%;
+  height: 65%;
   width: 30%;
   display: flex;
   align-items: center;
@@ -37,9 +40,15 @@ const StyledAccountButton = styled.button`
 const ButtonGroup = () => {
   return (
     <StyledButtonGroup>
-      <StyledInfoButton>Info</StyledInfoButton>
-      <StyledSettingsButton>Settings</StyledSettingsButton>
-      <StyledAccountButton>Account</StyledAccountButton>
+      <StyledInfoButton>
+        <Info height={"75%"} />
+      </StyledInfoButton>
+      <StyledSettingsButton>
+        <Settings height={"75%"} />
+      </StyledSettingsButton>
+      <StyledAccountButton>
+        <User height={"75%"} />
+      </StyledAccountButton>
     </StyledButtonGroup>
   );
 };
