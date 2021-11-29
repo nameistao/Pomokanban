@@ -8,13 +8,38 @@ const StyledTimerOptions = styled.section`
 `;
 
 interface IProps {
-  setColorScheme: MouseEventHandler;
+  setColorScheme: Function;
+  setRemainder: Function;
+  timers: Array<number>;
+  curTimer: string;
+  setCurTimer: Function;
+  intervalId: number;
+  setTotal: Function;
+  setStartStop: Function;
 }
 
-const TimerOptions = ({ setColorScheme }: IProps) => {
+const TimerOptions = ({
+  setRemainder,
+  setColorScheme,
+  timers,
+  curTimer,
+  setCurTimer,
+  intervalId,
+  setTotal,
+  setStartStop,
+}: IProps) => {
   return (
     <StyledTimerOptions>
-      <ButtonGroup setColorScheme={setColorScheme} />
+      <ButtonGroup
+        setColorScheme={setColorScheme}
+        setRemainder={setRemainder}
+        timers={timers}
+        curTimer={curTimer}
+        setCurTimer={setCurTimer}
+        intervalId={intervalId}
+        setTotal={setTotal}
+        setStartStop={setStartStop}
+      />
     </StyledTimerOptions>
   );
 };

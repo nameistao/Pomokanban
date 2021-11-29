@@ -18,10 +18,17 @@ const StyledSection = styled.section`
 
 interface IProps {
   colorScheme: Array<string>;
-  setColorScheme: Dispatch<any>;
+  setColorScheme: Function;
   startStop: string;
   startStopHandler: MouseEventHandler;
   remainder: number;
+  setRemainder: Function;
+  timers: Array<number>;
+  curTimer: string;
+  setCurTimer;
+  intervalId: number;
+  setTotal: Function;
+  setStartStop: Function;
 }
 
 const TimerBox = ({
@@ -30,10 +37,26 @@ const TimerBox = ({
   startStop,
   startStopHandler,
   remainder,
+  setRemainder,
+  timers,
+  curTimer,
+  setCurTimer,
+  intervalId,
+  setTotal,
+  setStartStop,
 }: IProps) => {
   return (
-    <StyledSection color={colorScheme[2]}>
-      <TimerOptions setColorScheme={setColorScheme} />
+    <StyledSection color={colorScheme[1]}>
+      <TimerOptions
+        setColorScheme={setColorScheme}
+        setRemainder={setRemainder}
+        timers={timers}
+        curTimer={curTimer}
+        setCurTimer={setCurTimer}
+        intervalId={intervalId}
+        setTotal={setTotal}
+        setStartStop={setStartStop}
+      />
       <Timer remainder={remainder} />
       <StartStopButton
         startStop={startStop}

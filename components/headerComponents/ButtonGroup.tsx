@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledButtonGroup = styled.div`
-  height: 30%;
+  height: 50%;
   width: 30%;
   display: flex;
   align-items: center;

@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useState } from "react";
-import LoadingBar from "react-top-loading-bar";
+import { useEffect, useState } from "react";
+import LoadingBar from "components/LoadingBar";
 import Header from "components/Header";
 import TimerBox from "components/TimerBox";
 import Tasks from "components/Tasks";
@@ -17,20 +17,29 @@ const StyledMain = styled.main`
 
 const Home: NextPage = () => {
   //hooks
-  const [progress, setProgress] = useState(0);
   const [startStop, setStartStop] = useState("START");
+  //current timer
+  const [curTimer, setCurTimer] = useState("pomodoro");
+  //timers, in seconds. setTimers is used by settings
+  const [timers, setTimers] = useState([25 * 60, 5 * 60, 15 * 60]);
   //remaining time in seconds
-  const [remainder, setRemainder] = useState(25 * 60);
+  const [remainder, setRemainder] = useState(timers[0]);
   //total time in seconds, only changed by settings and buttons
-  const [total, setTotal] = useState(25 * 60);
+  const [total, setTotal] = useState(timers[0]);
+  //progress bar
+  const [progress, setProgress] = useState(0);
   //for tracking intervalId
   const [intervalId, setIntervalId] = useState(0);
   //color scheme
   const [colorScheme, setColorScheme] = useState([
-    "pomodoro",
     "rgb(47, 128, 109)",
     "rgb(55, 149, 127)",
   ]);
+
+  //updating progress bar
+  useEffect(() => {
+    setProgress((1 - remainder / total) * 100);
+  }, [remainder, total]);
 
   const startStopHandler = () => {
     if (startStop === "START") {
@@ -49,8 +58,6 @@ const Home: NextPage = () => {
 
         //update remainder with seconds remaining
         setRemainder(diff / 1000);
-        //move progress bar
-        setProgress((1 - diff / 1000 / total) * 100);
 
         //if timer is up, end interval
         if (diff < 0) {
@@ -80,12 +87,8 @@ const Home: NextPage = () => {
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <StyledMain color={colorScheme[1]}>
-        <LoadingBar
-          color="#fff"
-          progress={progress}
-          onLoaderFinished={() => setProgress(0)}
-        />
+      <StyledMain color={colorScheme[0]}>
+        <LoadingBar progress={progress} />
         <Header />
         <TimerBox
           colorScheme={colorScheme}
@@ -93,6 +96,13 @@ const Home: NextPage = () => {
           startStop={startStop}
           startStopHandler={startStopHandler}
           remainder={remainder}
+          setRemainder={setRemainder}
+          timers={timers}
+          curTimer={curTimer}
+          setCurTimer={setCurTimer}
+          intervalId={intervalId}
+          setTotal={setTotal}
+          setStartStop={setStartStop}
         />
         <Tasks />
       </StyledMain>
