@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 const StyledUserModal = styled.section`
   width: 60vw;
-  height: 87.5vh;
-  background-color: blue;
+  height: 82.5vh;
+  background-color: ${(props) => props.color};
   margin: auto;
+  border-radius: 7.5px;
 `;
 
 export default StyledUserModal;
