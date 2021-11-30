@@ -96,8 +96,12 @@ const Home: NextPage = () => {
         {showModal === "info" && (
           <InfoModal color={colorScheme[1]} setShowModal={setShowModal} />
         )}
-        {showModal === "settings" && <SettingsModal color={colorScheme[1]} />}
-        {showModal === "user" && <UserModal color={colorScheme[1]} />}
+        {showModal === "settings" && (
+          <SettingsModal color={colorScheme[1]} setShowModal={setShowModal} />
+        )}
+        {showModal === "user" && (
+          <UserModal color={colorScheme[1]} setShowModal={setShowModal} />
+        )}
         {showModal === "" && (
           <>
             <TimerBox
