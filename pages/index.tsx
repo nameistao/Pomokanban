@@ -102,6 +102,12 @@ const Home: NextPage = () => {
             setShowModal={setShowModal}
             timers={timers}
             setTimers={setTimers}
+            remainder={remainder}
+            setRemainder={setRemainder}
+            total={total}
+            setTotal={setTotal}
+            curTimer={curTimer}
+            startStopHandler={startStopHandler}
           />
         )}
         {showModal === "user" && (

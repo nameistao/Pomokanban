@@ -58,9 +58,26 @@ interface IProps {
   setShowModal: Function;
   timers: Array<number>;
   setTimers: Function;
+  remainder: number;
+  setRemainder: Function;
+  total: number;
+  setTotal: Function;
+  curTimer: string;
+  startStopHandler: Function;
 }
 
-const SettingsModal = ({ color, setShowModal, timers, setTimers }: IProps) => {
+const SettingsModal = ({
+  color,
+  setShowModal,
+  timers,
+  setTimers,
+  remainder,
+  setRemainder,
+  total,
+  setTotal,
+  curTimer,
+  startStopHandler,
+}: IProps) => {
   const [pomodororoTime, setPomodororoTime] = useState(timers[0] / 60);
   const [shortBreakTime, setShortBreakTime] = useState(timers[1] / 60);
   const [longBreakTime, setLongBreakTime] = useState(timers[2] / 60);
@@ -79,6 +96,24 @@ const SettingsModal = ({ color, setShowModal, timers, setTimers }: IProps) => {
 
   const saveHandler = () => {
     setTimers([pomodororoTime * 60, shortBreakTime * 60, longBreakTime * 60]);
+    const elapsed = Math.floor(total - remainder);
+    switch (curTimer) {
+      case "pomodoro":
+        setTotal(pomodororoTime * 60);
+        setRemainder(pomodororoTime * 60 - elapsed);
+        startStopHandler();
+        break;
+      case "shortBreak":
+        setTotal(shortBreakTime * 60);
+        setRemainder(shortBreakTime * 60 - elapsed);
+        startStopHandler();
+        break;
+      case "longBreak":
+        setTotal(longBreakTime * 60);
+        setRemainder(longBreakTime * 60 - elapsed);
+        startStopHandler();
+        break;
+    }
   };
   return (
     <StyledSettingsModal color={color[1]}>
