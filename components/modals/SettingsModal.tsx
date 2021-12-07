@@ -101,17 +101,14 @@ const SettingsModal = ({
       case "pomodoro":
         setTotal(pomodororoTime * 60);
         setRemainder(pomodororoTime * 60 - elapsed);
-        startStopHandler();
         break;
       case "shortBreak":
         setTotal(shortBreakTime * 60);
         setRemainder(shortBreakTime * 60 - elapsed);
-        startStopHandler();
         break;
       case "longBreak":
         setTotal(longBreakTime * 60);
         setRemainder(longBreakTime * 60 - elapsed);
-        startStopHandler();
         break;
     }
   };
