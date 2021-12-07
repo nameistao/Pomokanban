@@ -94,13 +94,18 @@ const Home: NextPage = () => {
         <LoadingBar progress={progress} />
         <Header setShowModal={setShowModal} />
         {showModal === "info" && (
-          <InfoModal color={colorScheme[1]} setShowModal={setShowModal} />
+          <InfoModal color={colorScheme} setShowModal={setShowModal} />
         )}
         {showModal === "settings" && (
-          <SettingsModal color={colorScheme[1]} setShowModal={setShowModal} />
+          <SettingsModal
+            color={colorScheme}
+            setShowModal={setShowModal}
+            timers={timers}
+            setTimers={setTimers}
+          />
         )}
         {showModal === "user" && (
-          <UserModal color={colorScheme[1]} setShowModal={setShowModal} />
+          <UserModal color={colorScheme} setShowModal={setShowModal} />
         )}
         {showModal === "" && (
           <>

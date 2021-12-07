@@ -6,7 +6,7 @@ const StyledInfoModal = styled.section`
   height: 82.5vh;
   background-color: ${(props) => props.color};
   margin: auto;
-  border-radius: 7.5px;
+  border-radius: 20px;
   display: flex;
   align-items: end;
   flex-direction: column;
@@ -48,18 +48,18 @@ const StyledModalContent = styled.div`
   width: 90%;
   margin: 5%;
   height: 85%;
-  background-color: #fff;
   border-radius: 7.5px;
+  color: #fff;
 `;
 
 interface IProps {
-  color: string;
+  color: object;
   setShowModal: Function;
 }
 
 const InfoModal = ({ color, setShowModal }: IProps) => {
   return (
-    <StyledInfoModal color={color}>
+    <StyledInfoModal color={color[1]}>
       <StyledTopRow>
         <StyledModalTitle>Information</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>

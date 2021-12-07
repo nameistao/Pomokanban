@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import Times from "components/icons/Times";
+import { useState } from "react";
 
 const StyledSettingsModal = styled.section`
   width: 60vw;
   height: 82.5vh;
   background-color: ${(props) => props.color};
   margin: auto;
-  border-radius: 7.5px;
+  border-radius: 20px;
   display: flex;
   align-items: end;
   flex-direction: column;
@@ -48,18 +49,39 @@ const StyledModalContent = styled.div`
   width: 90%;
   margin: 5%;
   height: 85%;
-  background-color: #fff;
   border-radius: 7.5px;
+  color: #fff;
 `;
 
 interface IProps {
-  color: string;
+  color: object;
   setShowModal: Function;
+  timers: Array<number>;
+  setTimers: Function;
 }
 
-const SettingsModal = ({ color, setShowModal }: IProps) => {
+const SettingsModal = ({ color, setShowModal, timers, setTimers }: IProps) => {
+  const [pomodororoTime, setPomodororoTime] = useState(timers[0] / 60);
+  const [shortBreakTime, setShortBreakTime] = useState(timers[1] / 60);
+  const [longBreakTime, setLongBreakTime] = useState(timers[2] / 60);
+
+  const pomodororoTimeChangeHandler = (e) => {
+    setPomodororoTime(e.target.value);
+  };
+
+  const shortBreakTimeChangeHandler = (e) => {
+    setShortBreakTime(e.target.value);
+  };
+
+  const longBreakTimeChangeHandler = (e) => {
+    setLongBreakTime(e.target.value);
+  };
+
+  const saveHandler = () => {
+    setTimers([pomodororoTime * 60, shortBreakTime * 60, longBreakTime * 60]);
+  };
   return (
-    <StyledSettingsModal color={color}>
+    <StyledSettingsModal color={color[1]}>
       <StyledTopRow>
         <StyledModalTitle>Settings</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>
@@ -67,13 +89,31 @@ const SettingsModal = ({ color, setShowModal }: IProps) => {
         </StyledTimesButton>
       </StyledTopRow>
       <StyledModalContent>
-        <p>- Pomodororo is a productivity tool for managing your work.</p>
         <p>
-          - Break down your tasks into manageable chunks of work and breaks.
+          Pomodororo
+          <input
+            type="text"
+            value={pomodororoTime}
+            onChange={pomodororoTimeChangeHandler}
+          />
         </p>
-        <p>- Features:</p>
-        <p>- Customizable Countdown Timers</p>
-        <p>- Progress Bar</p>
+        <p>
+          Short Break
+          <input
+            type="text"
+            value={shortBreakTime}
+            onChange={shortBreakTimeChangeHandler}
+          />
+        </p>
+        <p>
+          Long Break
+          <input
+            type="text"
+            value={longBreakTime}
+            onChange={longBreakTimeChangeHandler}
+          />
+        </p>
+        <button onClick={saveHandler}>Save</button>
       </StyledModalContent>
     </StyledSettingsModal>
   );

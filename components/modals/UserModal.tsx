@@ -6,7 +6,7 @@ const StyledUserModal = styled.section`
   height: 82.5vh;
   background-color: ${(props) => props.color};
   margin: auto;
-  border-radius: 7.5px;
+  border-radius: 20px;
   display: flex;
   align-items: end;
   flex-direction: column;
@@ -48,18 +48,18 @@ const StyledModalContent = styled.div`
   width: 90%;
   margin: 5%;
   height: 85%;
-  background-color: #fff;
   border-radius: 7.5px;
+  color: #fff;
 `;
 
 interface IProps {
-  color: string;
+  color: object;
   setShowModal: Function;
 }
 
 const UserModal = ({ color, setShowModal }: IProps) => {
   return (
-    <StyledUserModal color={color}>
+    <StyledUserModal color={color[1]}>
       <StyledTopRow>
         <StyledModalTitle>User</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>
@@ -67,13 +67,7 @@ const UserModal = ({ color, setShowModal }: IProps) => {
         </StyledTimesButton>
       </StyledTopRow>
       <StyledModalContent>
-        <p>- Pomodororo is a productivity tool for managing your work.</p>
-        <p>
-          - Break down your tasks into manageable chunks of work and breaks.
-        </p>
-        <p>- Features:</p>
-        <p>- Customizable Countdown Timers</p>
-        <p>- Progress Bar</p>
+        <p>Coming Soon</p>
       </StyledModalContent>
     </StyledUserModal>
   );
