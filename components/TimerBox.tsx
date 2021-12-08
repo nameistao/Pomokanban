@@ -62,6 +62,7 @@ const TimerBox = ({
       <StartStopButton
         startStop={startStop}
         startStopHandler={startStopHandler}
+        color={colorScheme[1]}
       />
     </StyledSection>
   );

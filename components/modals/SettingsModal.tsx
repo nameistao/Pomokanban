@@ -53,6 +53,48 @@ const StyledModalContent = styled.div`
   color: #fff;
 `;
 
+const StyledRow = styled.div`
+  width: 100%;
+  height: 10%;
+  justify-content: space-between;
+  display: flex;
+`;
+
+const StyledTextBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledInput = styled.input`
+  display: flex;
+  align-items: center;
+  height: 60%;
+  margin: auto 0;
+  border-radius: 7.5px;
+  border: none;
+`;
+
+const StyledSaveButton = styled.button`
+  border-radius: 7.5px;
+  background-color: inherit;
+  border: 1px #fff solid;
+  background-color: #fff;
+  box-shadow: rgb(235, 235, 235) 0px 8px 0px;
+  font-size: 30px;
+  font-weight: 600;
+  :hover {
+    background-color: #fff;
+    cursor: pointer;
+  }
+  :active {
+    transform: translateY(8px);
+    box-shadow: none;
+    outline: none;
+  }
+  transition: color 0.7s ease;
+  margin-top: 10%;
+`;
+
 interface IProps {
   color: object;
   setShowModal: Function;
@@ -121,37 +163,37 @@ const SettingsModal = ({
         </StyledTimesButton>
       </StyledTopRow>
       <StyledModalContent>
-        <p>
-          Pomodororo
-          <input
+        <StyledRow>
+          <StyledTextBox>Pomodororo</StyledTextBox>
+          <StyledInput
             required
             min="0"
             type="number"
             value={pomodororoTime}
             onChange={pomodororoTimeChangeHandler}
           />
-        </p>
-        <p>
-          Short Break
-          <input
+        </StyledRow>
+        <StyledRow>
+          <StyledTextBox>Short Break</StyledTextBox>
+          <StyledInput
             required
             min="0"
             type="number"
             value={shortBreakTime}
             onChange={shortBreakTimeChangeHandler}
           />
-        </p>
-        <p>
-          Long Break
-          <input
+        </StyledRow>
+        <StyledRow>
+          <StyledTextBox>Long Break</StyledTextBox>
+          <StyledInput
             required
             min="0"
             type="number"
             value={longBreakTime}
             onChange={longBreakTimeChangeHandler}
           />
-        </p>
-        <button onClick={saveHandler}>Save</button>
+        </StyledRow>
+        <StyledSaveButton onClick={saveHandler}>Save</StyledSaveButton>
       </StyledModalContent>
     </StyledSettingsModal>
   );
