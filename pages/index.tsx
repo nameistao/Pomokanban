@@ -155,7 +155,7 @@ const Home: NextPage = () => {
               setTotal={setTotal}
               setStartStop={setStartStop}
             />
-            <Tasks taskData={taskData} />
+            <Tasks taskData={taskData} setTaskData={setTaskData} />
           </>
         )}
       </StyledMain>

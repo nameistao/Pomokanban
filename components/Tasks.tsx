@@ -14,11 +14,42 @@ const StyledSection = styled.section`
 
 interface IProps {
   taskData: { columnOrder: Array<string>; columns: object; tasks: object };
+  setTaskData: Function;
 }
 
-const Tasks = ({ taskData }: IProps) => {
-  const onDragEndHandler = () => {
-    //TODO
+const Tasks = ({ taskData, setTaskData }: IProps) => {
+  const onDragEndHandler = (result) => {
+    const { destination, source, draggableId } = result;
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const column = taskData.columns[source.droppableId];
+    const newTaskIds = Array.from(column.taskIds);
+    newTaskIds.splice(source.index, 1);
+    newTaskIds.splice(destination.index, 0, draggableId);
+
+    const newColumn = {
+      ...column,
+      taskIds: newTaskIds,
+    };
+
+    const newState = {
+      ...taskData,
+      columns: {
+        ...taskData.columns,
+        [newColumn.id]: newColumn,
+      },
+    };
+
+    setTaskData(newState);
   };
 
   return (
