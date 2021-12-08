@@ -53,7 +53,7 @@ const Home: NextPage = () => {
         content: "watch fav show",
       },
       "task-3": {
-        id: "task-1",
+        id: "task-3",
         content: "take out garbage",
       },
     },

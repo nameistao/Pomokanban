@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Task from "components/Task";
+import { Droppable } from "react-beautiful-dnd";
 
 const Container = styled.div`
   margin: 8px;
@@ -9,12 +10,12 @@ const Container = styled.div`
 const Title = styled.h3`
   padding: 8px;
 `;
-const TaskList = styled.div`
+const TaskList = styled.div<{ ref: any }>`
   padding: 8px;
 `;
 
 interface IProps {
-  column: { title: string };
+  column: { title: string; id: string };
   tasks: Array<{ id: string; content: string }>;
 }
 
@@ -22,11 +23,16 @@ const Column = ({ column, tasks }: IProps) => {
   return (
     <Container>
       <Title>{column.title}</Title>
-      <TaskList>
-        {tasks.map((task) => (
-          <Task key={task.id} task={task} />
-        ))}
-      </TaskList>
+      <Droppable droppableId={column.id}>
+        {(provided) => (
+          <TaskList ref={provided.innerRef} {...provided.droppableProps}>
+            {tasks.map((task, index) => (
+              <Task key={task.id} task={task} index={index} />
+            ))}
+            {provided.placeholder}
+          </TaskList>
+        )}
+      </Droppable>
     </Container>
   );
 };
