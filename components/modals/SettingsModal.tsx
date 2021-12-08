@@ -124,7 +124,9 @@ const SettingsModal = ({
         <p>
           Pomodororo
           <input
-            type="text"
+            required
+            min="0"
+            type="number"
             value={pomodororoTime}
             onChange={pomodororoTimeChangeHandler}
           />
@@ -132,7 +134,9 @@ const SettingsModal = ({
         <p>
           Short Break
           <input
-            type="text"
+            required
+            min="0"
+            type="number"
             value={shortBreakTime}
             onChange={shortBreakTimeChangeHandler}
           />
@@ -140,7 +144,9 @@ const SettingsModal = ({
         <p>
           Long Break
           <input
-            type="text"
+            required
+            min="0"
+            type="number"
             value={longBreakTime}
             onChange={longBreakTimeChangeHandler}
           />
