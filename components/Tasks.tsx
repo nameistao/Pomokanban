@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Column from "components/Column";
 
 const StyledSection = styled.section`
   width: 60vw;
@@ -9,8 +10,20 @@ const StyledSection = styled.section`
   border-radius: 7.5px;
 `;
 
-const Tasks = () => {
-  return <StyledSection>Tasks...Add Drag and Drop</StyledSection>;
+interface IProps {
+  taskData: { columnOrder: Array<string>; columns: object; tasks: object };
+}
+
+const Tasks = ({ taskData }: IProps) => {
+  return (
+    <StyledSection>
+      {taskData.columnOrder.map((columnId) => {
+        const column = taskData.columns[columnId];
+        const tasks = column.taskIds.map((taskId) => taskData.tasks[taskId]);
+        return <Column key={column.id} column={column} tasks={tasks} />;
+      })}
+    </StyledSection>
+  );
 };
 
 export default Tasks;

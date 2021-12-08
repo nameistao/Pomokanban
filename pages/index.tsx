@@ -11,6 +11,7 @@ import InfoModal from "components/modals/InfoModal";
 import SettingsModal from "components/modals/SettingsModal";
 import UserModal from "components/modals/UserModal";
 import styled from "styled-components";
+import "@atlaskit/css-reset";
 
 const StyledMain = styled.main`
   height: 100vh;
@@ -20,7 +21,7 @@ const StyledMain = styled.main`
 `;
 
 const Home: NextPage = () => {
-  //hooks
+  //start or stop state
   const [startStop, setStartStop] = useState("START");
   //current timer
   const [curTimer, setCurTimer] = useState("pomodoro");
@@ -41,6 +42,30 @@ const Home: NextPage = () => {
   ]);
   //show modals
   const [showModal, setShowModal] = useState("");
+  const [taskData, setTaskData] = useState({
+    tasks: {
+      "task-1": {
+        id: "task-1",
+        content: "take out garbage",
+      },
+      "task-2": {
+        id: "task-2",
+        content: "watch fav show",
+      },
+      "task-3": {
+        id: "task-1",
+        content: "take out garbage",
+      },
+    },
+    columns: {
+      "column-1": {
+        id: "column-1",
+        title: "To do",
+        taskIds: ["task-1", "task-2", "task-3"],
+      },
+    },
+    columnOrder: ["column-1"],
+  });
 
   //updating progress bar
   useEffect(() => {
@@ -130,7 +155,7 @@ const Home: NextPage = () => {
               setTotal={setTotal}
               setStartStop={setStartStop}
             />
-            <Tasks />
+            <Tasks taskData={taskData} />
           </>
         )}
       </StyledMain>
