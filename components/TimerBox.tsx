@@ -10,11 +10,11 @@ const StyledSection = styled.section`
   width: 60vw;
   color: #fff;
   margin: 0 auto 0 auto;
-  background: ${(props) => props.color};
+  background-color: ${(props) => props.color};
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  transition: 0.7s ease;
+  transition: background-color 0.7s ease;
 `;
 
 interface IProps {

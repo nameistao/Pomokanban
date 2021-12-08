@@ -15,8 +15,8 @@ import styled from "styled-components";
 const StyledMain = styled.main`
   height: 100vh;
   width: 100vw;
-  background: ${(props) => props.color};
-  transition: 0.7s ease;
+  background-color: ${(props) => props.color};
+  transition: background-color 0.7s ease;
 `;
 
 const Home: NextPage = () => {
