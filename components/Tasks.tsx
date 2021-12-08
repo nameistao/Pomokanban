@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 const StyledSection = styled.section`
   width: 60vw;
-  height: 52.5vh;
-  background: orange;
-  color: #fff;
-  margin: auto;
+  height: 45vh;
+  background: #fff;
+  color: black;
+  margin: 2.5vh auto auto auto;
+  border-radius: 7.5px;
 `;
 
 const Tasks = () => {

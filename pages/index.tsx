@@ -130,6 +130,7 @@ const Home: NextPage = () => {
               setTotal={setTotal}
               setStartStop={setStartStop}
             />
+            <Tasks />
           </>
         )}
       </StyledMain>
