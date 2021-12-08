@@ -30,6 +30,7 @@ const StyledStartStopButton = styled.button<{ color: string }>`
     box-shadow: none;
     outline: none;
   }
+  transition: color 0.7s ease;
 `;
 
 interface IProps {
