@@ -3,24 +3,31 @@ import styled from "styled-components";
 
 const StyledStartStopButtonWrapper = styled.section`
   width: 100%;
-  height: 30%;
+  height: 35%;
   text-align: center;
   display: flex;
   align-items: center;
 `;
 
 const StyledStartStopButton = styled.button`
-  width: 80%;
-  height: 75%;
+  width: 60%;
+  height: 60%;
   margin: auto;
   border-radius: 7.5px;
   background-color: inherit;
   border: 1px #fff solid;
-  color: #fff;
+  color: grey;
+  background-color: #fff;
+  box-shadow: rgb(235, 235, 235) 0px 8px 0px;
+  font-size: 30px;
   :hover {
     background-color: #fff;
     cursor: pointer;
-    color: black;
+  }
+  :active {
+    transform: translateY(8px);
+    box-shadow: none;
+    outline: none;
   }
 `;
 
