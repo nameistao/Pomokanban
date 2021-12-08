@@ -14,6 +14,7 @@ const StyledSection = styled.section`
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  transition: 0.7s ease;
 `;
 
 interface IProps {
