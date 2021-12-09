@@ -5,6 +5,7 @@ import { MouseEventHandler } from "react";
 const StyledTimerOptions = styled.section`
   width: 100%;
   height: 20%;
+  z-index: 2;
 `;
 
 interface IProps {
