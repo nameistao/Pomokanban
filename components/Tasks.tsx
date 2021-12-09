@@ -11,13 +11,14 @@ const Container = styled.div`
   height: 85%;
 `;
 
-const StyledSection = styled.section`
+const StyledSection = styled.section<{ color: string }>`
   width: 60vw;
   height: 45vh;
-  background: #fff;
+  background-color: ${(props) => props.color};
   color: black;
   margin: 2.5vh auto auto auto;
   border-radius: 20px;
+  transition: background-color 0.7s ease;
 `;
 
 const AddRow = styled.div`
@@ -31,24 +32,40 @@ const AddInput = styled.input`
   height: 75%;
   width: 75%;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #fff;
   :focus {
     outline: none;
   }
-  caret-color: transparent;
+  caret-color: #fff;
+  background-color: inherit;
+  color: #fff;
+  font-size: 25px;
+  ::placeholder {
+    color: #fff;
+    opacity: 0.3;
+  }
 `;
 
 const AddButton = styled.button`
   height: 75%;
   width: 7.5%;
+  border-radius: 7.5px;
+  border: 2px solid #fff;
+  background-color: inherit;
+  color: #fff;
+  font-size: 25px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 interface IProps {
   taskData: { columnOrder: Array<string>; columns: object; tasks: any };
   setTaskData: Function;
+  colorScheme: Array<string>;
 }
 
-const Tasks = ({ taskData, setTaskData }: IProps) => {
+const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
   const [addValue, setAddValue] = useState();
 
   const addValueOnChangeHandler = (e) => {
@@ -142,7 +159,7 @@ const Tasks = ({ taskData, setTaskData }: IProps) => {
 
   return (
     <NoSSR>
-      <StyledSection>
+      <StyledSection color={colorScheme[1]}>
         <DragDropContext onDragEnd={onDragEndHandler}>
           <Container>
             {taskData.columnOrder.map((columnId) => {
@@ -157,6 +174,7 @@ const Tasks = ({ taskData, setTaskData }: IProps) => {
                   tasks={tasks}
                   taskData={taskData}
                   setTaskData={setTaskData}
+                  colorScheme={colorScheme}
                 />
               );
             })}
@@ -164,7 +182,11 @@ const Tasks = ({ taskData, setTaskData }: IProps) => {
         </DragDropContext>
 
         <AddRow>
-          <AddInput type="text" onChange={addValueOnChangeHandler}></AddInput>
+          <AddInput
+            type="text"
+            onChange={addValueOnChangeHandler}
+            placeholder="Add To Do"
+          ></AddInput>
           <AddButton onClick={addTaskHandler}>+</AddButton>
         </AddRow>
       </StyledSection>

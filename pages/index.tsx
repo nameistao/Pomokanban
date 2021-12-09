@@ -152,7 +152,11 @@ const Home: NextPage = () => {
               setTotal={setTotal}
               setStartStop={setStartStop}
             />
-            <Tasks taskData={taskData} setTaskData={setTaskData} />
+            <Tasks
+              taskData={taskData}
+              setTaskData={setTaskData}
+              colorScheme={colorScheme}
+            />
           </>
         )}
       </StyledMain>
