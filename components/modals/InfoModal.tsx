@@ -74,6 +74,7 @@ const InfoModal = ({ color, setShowModal }: IProps) => {
         <p>- Features:</p>
         <p>- Customizable Countdown Timers</p>
         <p>- Progress Bar</p>
+        <p>- Kanban Board</p>
       </StyledModalContent>
     </StyledInfoModal>
   );
