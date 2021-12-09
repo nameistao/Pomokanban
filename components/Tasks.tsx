@@ -141,8 +141,8 @@ const Tasks = ({ taskData, setTaskData }: IProps) => {
   };
 
   return (
-    <StyledSection>
-      <NoSSR>
+    <NoSSR>
+      <StyledSection>
         <DragDropContext onDragEnd={onDragEndHandler}>
           <Container>
             {taskData.columnOrder.map((columnId) => {
@@ -162,12 +162,13 @@ const Tasks = ({ taskData, setTaskData }: IProps) => {
             })}
           </Container>
         </DragDropContext>
-      </NoSSR>
-      <AddRow>
-        <AddInput type="text" onChange={addValueOnChangeHandler}></AddInput>
-        <AddButton onClick={addTaskHandler}>+</AddButton>
-      </AddRow>
-    </StyledSection>
+
+        <AddRow>
+          <AddInput type="text" onChange={addValueOnChangeHandler}></AddInput>
+          <AddButton onClick={addTaskHandler}>+</AddButton>
+        </AddRow>
+      </StyledSection>
+    </NoSSR>
   );
 };
 
