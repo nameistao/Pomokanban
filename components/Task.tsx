@@ -1,19 +1,29 @@
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 
-const Container = styled.div<{ ref: any; isDragging: any }>`
-  border: 1px solid lightgrey;
+const Container = styled.div<{ ref: any; isDragging: any; color: string }>`
   padding: 8px;
+  border: ${(props) => (props.isDragging ? "1px #fff solid" : "none")};
   margin-bottom: 8px;
-  background-color: ${(props) => (props.isDragging ? "lightgreen" : "white")};
+  background-color: ${(props) => props.color};
   border-radius: 7.5px;
   display: flex;
   justify-content: space-between;
+  color: #fff;
+  transition: all 0.7s ease;
 `;
 
 const RemoveButton = styled.button`
-  height: 80%;
+  height: 25x;
   width: 25px;
+  background-color: inherit;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 interface IProps {
@@ -21,6 +31,7 @@ interface IProps {
   index: any;
   taskData: { columnOrder: Array<string>; columns: object; tasks: any };
   setTaskData: Function;
+  colorScheme: Array<string>;
 }
 
 const removeTaskFromColumns = (columns, idToRemove) => {
@@ -35,7 +46,7 @@ const removeTaskFromColumns = (columns, idToRemove) => {
   return columns;
 };
 
-const Task = ({ task, index, taskData, setTaskData }: IProps) => {
+const Task = ({ task, index, taskData, setTaskData, colorScheme }: IProps) => {
   const removeTaskHandler = () => {
     const idToRemove = task.id;
     const newTasks = taskData.tasks;
@@ -56,6 +67,7 @@ const Task = ({ task, index, taskData, setTaskData }: IProps) => {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
+          color={colorScheme[0]}
         >
           {task.content}
           <RemoveButton onClick={removeTaskHandler}>x</RemoveButton>
