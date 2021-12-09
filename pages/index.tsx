@@ -60,12 +60,12 @@ const Home: NextPage = () => {
     columns: {
       "column-1": {
         id: "column-1",
-        title: "To do",
+        title: "To Do",
         taskIds: ["task-1", "task-2", "task-3"],
       },
       "column-2": {
         id: "column-2",
-        title: "In progress",
+        title: "In Progress",
         taskIds: [],
       },
       "column-3": {
