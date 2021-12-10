@@ -4,12 +4,13 @@ import { MouseEventHandler } from "react";
 
 const StyledTimerOptions = styled.section`
   width: 100%;
-  height: 20%;
+  height: 15%;
   z-index: 2;
 `;
 
 interface IProps {
   setColorScheme: Function;
+  colorScheme: Array<string>;
   setRemainder: Function;
   timers: Array<number>;
   curTimer: string;
@@ -22,6 +23,7 @@ interface IProps {
 const TimerOptions = ({
   setRemainder,
   setColorScheme,
+  colorScheme,
   timers,
   curTimer,
   setCurTimer,
@@ -33,6 +35,7 @@ const TimerOptions = ({
     <StyledTimerOptions>
       <ButtonGroup
         setColorScheme={setColorScheme}
+        colorScheme={colorScheme}
         setRemainder={setRemainder}
         timers={timers}
         curTimer={curTimer}

@@ -18,6 +18,7 @@ const StyledMain = styled.main`
   width: 100vw;
   background-color: ${(props) => props.color};
   transition: background-color 0.7s ease;
+  font-family: Arial;
 `;
 
 const Home: NextPage = () => {

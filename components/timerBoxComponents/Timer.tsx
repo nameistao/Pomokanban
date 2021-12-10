@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledTimerWrapper = styled.section`
   width: 100%;
-  height: 45%;
+  height: 50%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -23,7 +23,9 @@ const Timer = ({ remainder }: IProps) => {
       <StyledTimer>
         {remainder < 0
           ? "0:00"
-          : Math.floor(remainder / 60) +
+          : (Math.floor(remainder / 60) < 10
+              ? "0" + Math.floor(remainder / 60)
+              : Math.floor(remainder / 60)) +
             ":" +
             (Math.floor(remainder % 60) < 10
               ? "0" + Math.floor(remainder % 60)

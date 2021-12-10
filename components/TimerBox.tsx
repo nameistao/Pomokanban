@@ -3,11 +3,11 @@ import styled from "styled-components";
 import TimerOptions from "components/timerBoxComponents/TimerOptions";
 import Timer from "components/timerBoxComponents/Timer";
 import StartStopButton from "./timerBoxComponents/StartStopButton";
-import { start } from "repl";
 
 const StyledSection = styled.section`
   height: 35vh;
-  width: 60vw;
+  width: fit-content;
+  padding: 0 4vw 0 4vw;
   color: #fff;
   margin: 0 auto 0 auto;
   background-color: ${(props) => props.color};
@@ -50,6 +50,7 @@ const TimerBox = ({
     <StyledSection color={colorScheme[1]}>
       <TimerOptions
         setColorScheme={setColorScheme}
+        colorScheme={colorScheme}
         setRemainder={setRemainder}
         timers={timers}
         curTimer={curTimer}
