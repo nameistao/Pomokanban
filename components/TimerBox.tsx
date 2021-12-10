@@ -7,7 +7,7 @@ import StartStopButton from "./timerBoxComponents/StartStopButton";
 const StyledSection = styled.section`
   height: 35vh;
   width: fit-content;
-  padding: 0 2vw 0 2vw;
+  padding: 0 4vw 0 4vw;
   color: #fff;
   margin: 0 auto 0 auto;
   background-color: ${(props) => props.color};

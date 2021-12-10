@@ -23,7 +23,9 @@ const Timer = ({ remainder }: IProps) => {
       <StyledTimer>
         {remainder < 0
           ? "0:00"
-          : Math.floor(remainder / 60) +
+          : (Math.floor(remainder / 60) < 10
+              ? "0" + Math.floor(remainder / 60)
+              : Math.floor(remainder / 60)) +
             ":" +
             (Math.floor(remainder % 60) < 10
               ? "0" + Math.floor(remainder % 60)
