@@ -73,6 +73,10 @@ const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
   };
 
   const addTaskHandler = () => {
+    if (addValue === undefined) {
+      return;
+    }
+
     const keyName = uuidv4();
     const tasks = {
       [keyName]: { id: keyName, content: addValue },
@@ -186,6 +190,7 @@ const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
             type="text"
             onChange={addValueOnChangeHandler}
             placeholder="Add To Do"
+            required
           ></AddInput>
           <AddButton onClick={addTaskHandler}>+</AddButton>
         </AddRow>
