@@ -47,8 +47,8 @@ const StyledTimesButton = styled.button`
 
 const StyledModalContent = styled.div`
   width: 90%;
-  margin: 5%;
-  height: 85%;
+  margin: 2% 5% 5% 5%;
+  height: 75%;
   border-radius: 7.5px;
   color: #fff;
 `;
@@ -74,25 +74,24 @@ const StyledInput = styled.input`
   border: none;
 `;
 
+const StyledSaveButtonWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const StyledSaveButton = styled.button`
-  border-radius: 7.5px;
+  border-radius: 4px;
   background-color: inherit;
-  border: 1px #fff solid;
-  background-color: #fff;
-  box-shadow: rgb(235, 235, 235) 0px 8px 0px;
-  font-size: 30px;
+  border: none;
+  font-size: 32.5px;
   font-weight: 600;
+  color: #fff;
   :hover {
-    background-color: #fff;
     cursor: pointer;
   }
-  :active {
-    transform: translateY(8px);
-    box-shadow: none;
-    outline: none;
-  }
-  transition: color 0.7s ease;
-  margin-top: 10%;
 `;
 
 const HorizontalLine = styled.hr`
@@ -198,8 +197,11 @@ const SettingsModal = ({
             onChange={longBreakTimeChangeHandler}
           />
         </StyledRow>
-        <StyledSaveButton onClick={saveHandler}>Save</StyledSaveButton>
       </StyledModalContent>
+      <HorizontalLine />
+      <StyledSaveButtonWrapper>
+        <StyledSaveButton onClick={saveHandler}>&#10004;</StyledSaveButton>
+      </StyledSaveButtonWrapper>
     </StyledSettingsModal>
   );
 };

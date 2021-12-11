@@ -46,7 +46,7 @@ const StyledTimesButton = styled.button`
 
 const StyledModalContent = styled.div`
   width: 90%;
-  margin: 5%;
+  margin: 2% 5% 5% 5%;
   height: 85%;
   border-radius: 7.5px;
   color: #fff;
