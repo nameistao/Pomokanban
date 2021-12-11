@@ -52,16 +52,17 @@ const removeTaskFromColumns = (columns, idToRemove) => {
 };
 
 const Task = ({ task, index, taskData, setTaskData, colorScheme }: IProps) => {
-  const removeTaskHandler = () => {
+  const removeTaskHandler = async () => {
     const idToRemove = task.id;
     const newTasks = taskData.tasks;
     delete newTasks[idToRemove];
     console.log(removeTaskFromColumns(taskData.columns, idToRemove));
-    setTaskData({
+    await setTaskData({
       ...taskData,
       tasks: newTasks,
       columns: removeTaskFromColumns(taskData.columns, idToRemove),
     });
+    localStorage.setItem("taskData", JSON.stringify(taskData));
   };
 
   return (

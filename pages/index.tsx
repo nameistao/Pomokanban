@@ -70,6 +70,16 @@ const Home: NextPage = () => {
     setProgress((1 - remainder / total) * 100);
   }, [remainder, total]);
 
+  //set taskData in localStorage
+  useEffect(() => {
+    if (
+      localStorage.getItem("taskData") !== null &&
+      localStorage.getItem("taskData") !== undefined
+    ) {
+      setTaskData(JSON.parse(localStorage.getItem("taskData")));
+    }
+  }, []);
+
   const startStopHandler = () => {
     if (startStop === "START") {
       //change button text to STOP

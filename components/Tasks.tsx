@@ -65,8 +65,9 @@ const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
     }
   };
 
-  const addValueOnChangeHandler = (e) => {
-    setAddValue(e.target.value);
+  const addValueOnChangeHandler = async (e) => {
+    await setAddValue(e.target.value);
+    localStorage.setItem("taskData", JSON.stringify(taskData));
   };
 
   const addTaskHandler = () => {
