@@ -13,7 +13,7 @@ const StyledStartStopButton = styled.button<{ color: string }>`
   width: 60%;
   height: 60%;
   margin: auto;
-  border-radius: 7.5px;
+  border-radius: 4px;
   background-color: inherit;
   border: 1px #fff solid;
   color: ${(props) => props.color};

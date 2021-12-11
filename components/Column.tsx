@@ -20,7 +20,7 @@ const TaskList = styled.div<{ ref: any; isDraggingOver: any }>`
   background-color: inherit;
   flex-grow: 1;
   min-height: 100px;
-  overflow: scroll;
+  overflow-y: scroll;
   border-radius: 20px;
 `;
 
