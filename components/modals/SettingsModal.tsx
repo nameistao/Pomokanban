@@ -15,17 +15,17 @@ const StyledSettingsModal = styled.section`
 
 const StyledTopRow = styled.div`
   width: 100%;
-  height: 10%;
+  height: 5%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5%;
+  margin-top: 4%;
 `;
 
 const StyledModalTitle = styled.div`
   width: auto;
   height: 100%;
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   flex-direction: column;
   padding-left: 5%;
@@ -47,8 +47,8 @@ const StyledTimesButton = styled.button`
 
 const StyledModalContent = styled.div`
   width: 90%;
-  margin: 5%;
-  height: 85%;
+  margin: 2% 5% 5% 5%;
+  height: 75%;
   border-radius: 7.5px;
   color: #fff;
 `;
@@ -74,25 +74,28 @@ const StyledInput = styled.input`
   border: none;
 `;
 
+const StyledSaveButtonWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const StyledSaveButton = styled.button`
-  border-radius: 7.5px;
+  border-radius: 4px;
   background-color: inherit;
-  border: 1px #fff solid;
-  background-color: #fff;
-  box-shadow: rgb(235, 235, 235) 0px 8px 0px;
-  font-size: 30px;
+  border: none;
+  font-size: 32.5px;
   font-weight: 600;
+  color: #fff;
   :hover {
-    background-color: #fff;
     cursor: pointer;
   }
-  :active {
-    transform: translateY(8px);
-    box-shadow: none;
-    outline: none;
-  }
-  transition: color 0.7s ease;
-  margin-top: 10%;
+`;
+
+const HorizontalLine = styled.hr`
+  width: 90%;
 `;
 
 interface IProps {
@@ -162,6 +165,7 @@ const SettingsModal = ({
           <Times height={"100%"} color={"#fff"} />
         </StyledTimesButton>
       </StyledTopRow>
+      <HorizontalLine />
       <StyledModalContent>
         <StyledRow>
           <StyledTextBox>Pomodororo</StyledTextBox>
@@ -193,8 +197,11 @@ const SettingsModal = ({
             onChange={longBreakTimeChangeHandler}
           />
         </StyledRow>
-        <StyledSaveButton onClick={saveHandler}>Save</StyledSaveButton>
       </StyledModalContent>
+      <HorizontalLine />
+      <StyledSaveButtonWrapper>
+        <StyledSaveButton onClick={saveHandler}>&#10004;</StyledSaveButton>
+      </StyledSaveButtonWrapper>
     </StyledSettingsModal>
   );
 };
