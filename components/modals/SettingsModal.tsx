@@ -15,17 +15,17 @@ const StyledSettingsModal = styled.section`
 
 const StyledTopRow = styled.div`
   width: 100%;
-  height: 10%;
+  height: 5%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5%;
+  margin-top: 4%;
 `;
 
 const StyledModalTitle = styled.div`
   width: auto;
   height: 100%;
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   flex-direction: column;
   padding-left: 5%;
@@ -95,6 +95,10 @@ const StyledSaveButton = styled.button`
   margin-top: 10%;
 `;
 
+const HorizontalLine = styled.hr`
+  width: 90%;
+`;
+
 interface IProps {
   color: object;
   setShowModal: Function;
@@ -162,6 +166,7 @@ const SettingsModal = ({
           <Times height={"100%"} color={"#fff"} />
         </StyledTimesButton>
       </StyledTopRow>
+      <HorizontalLine />
       <StyledModalContent>
         <StyledRow>
           <StyledTextBox>Pomodororo</StyledTextBox>

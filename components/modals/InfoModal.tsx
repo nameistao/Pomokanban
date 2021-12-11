@@ -14,17 +14,17 @@ const StyledInfoModal = styled.section`
 
 const StyledTopRow = styled.div`
   width: 100%;
-  height: 10%;
+  height: 5%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5%;
+  margin-top: 4%;
 `;
 
 const StyledModalTitle = styled.div`
   width: auto;
   height: 100%;
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   flex-direction: column;
   padding-left: 5%;
@@ -57,6 +57,10 @@ interface IProps {
   setShowModal: Function;
 }
 
+const HorizontalLine = styled.hr`
+  width: 90%;
+`;
+
 const InfoModal = ({ color, setShowModal }: IProps) => {
   return (
     <StyledInfoModal color={color[1]}>
@@ -66,6 +70,7 @@ const InfoModal = ({ color, setShowModal }: IProps) => {
           <Times height={"100%"} color={"#fff"} />
         </StyledTimesButton>
       </StyledTopRow>
+      <HorizontalLine />
       <StyledModalContent>
         <p>- Pomokanban is a productivity tool for managing your work.</p>
         <p>
