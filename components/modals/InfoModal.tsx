@@ -67,7 +67,7 @@ const InfoModal = ({ color, setShowModal }: IProps) => {
         </StyledTimesButton>
       </StyledTopRow>
       <StyledModalContent>
-        <p>- Pomodororo is a productivity tool for managing your work.</p>
+        <p>- Pomokanban is a productivity tool for managing your work.</p>
         <p>
           - Break down your tasks into manageable chunks of work and breaks.
         </p>

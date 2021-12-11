@@ -36,7 +36,7 @@ const Title = () => {
       ) : (
         "Pomodororo"
       )} */}
-      Pomodororo
+      Pomokanban
     </StyledTitle>
   );
 };
