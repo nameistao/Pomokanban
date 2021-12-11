@@ -6,7 +6,7 @@ const Container = styled.div<{ ref: any; isDragging: any; color: string }>`
   border: ${(props) => (props.isDragging ? "1px #fff solid" : "none")};
   margin-bottom: 8px;
   background-color: ${(props) => props.color};
-  border-radius: 7.5px;
+  border-radius: 4px;
   display: flex;
   justify-content: space-between;
   color: #fff;

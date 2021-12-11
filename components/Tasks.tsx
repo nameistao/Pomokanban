@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const StyledSection = styled.section<{ color: string }>`
   width: 50vw;
-  height: 45vh;
+  height: 50vh;
   background-color: ${(props) => props.color};
   margin: 2.5vh auto auto auto;
   border-radius: 6px;
