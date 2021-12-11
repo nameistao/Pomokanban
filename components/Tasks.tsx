@@ -15,7 +15,6 @@ const StyledSection = styled.section<{ color: string }>`
   width: 60vw;
   height: 45vh;
   background-color: ${(props) => props.color};
-  color: black;
   margin: 2.5vh auto auto auto;
   border-radius: 20px;
   transition: background-color 0.7s ease;
@@ -35,6 +34,9 @@ const AddInput = styled.input`
   border-bottom: 2px solid #fff;
   :focus {
     outline: none;
+    ::placeholder {
+      color: transparent;
+    }
   }
   caret-color: #fff;
   background-color: inherit;
@@ -44,19 +46,7 @@ const AddInput = styled.input`
     color: #fff;
     opacity: 0.3;
   }
-`;
-
-const AddButton = styled.button`
-  height: 75%;
-  width: 7.5%;
-  border-radius: 7.5px;
-  border: 2px solid #fff;
-  background-color: inherit;
-  color: #fff;
-  font-size: 25px;
-  :hover {
-    cursor: pointer;
-  }
+  text-align: center;
 `;
 
 interface IProps {
@@ -66,14 +56,21 @@ interface IProps {
 }
 
 const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
-  const [addValue, setAddValue] = useState();
+  const [addValue, setAddValue] = useState("");
+
+  const onEnterHandler = (event) => {
+    if (event.charCode === 13) {
+      addTaskHandler();
+      setAddValue("");
+    }
+  };
 
   const addValueOnChangeHandler = (e) => {
     setAddValue(e.target.value);
   };
 
   const addTaskHandler = () => {
-    if (addValue === undefined) {
+    if (addValue === undefined || addValue === null || addValue === "") {
       return;
     }
 
@@ -187,12 +184,14 @@ const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
 
         <AddRow>
           <AddInput
+            value={addValue}
             type="text"
             onChange={addValueOnChangeHandler}
-            placeholder="Add To Do"
+            placeholder="Add To Do 	
+            &#8629;"
             required
+            onKeyPress={onEnterHandler}
           ></AddInput>
-          <AddButton onClick={addTaskHandler}>+</AddButton>
         </AddRow>
       </StyledSection>
     </NoSSR>
