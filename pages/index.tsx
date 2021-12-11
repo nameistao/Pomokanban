@@ -116,6 +116,10 @@ const Home: NextPage = () => {
               " - Pomokanban"}
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Pomokanban is a free and customizable productivity app that includes both a pomodoro timer and kanban board!"
+        />
       </Head>
       <StyledMain color={colorScheme[0]}>
         <LoadingBar progress={progress} />
