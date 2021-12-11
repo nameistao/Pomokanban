@@ -10,6 +10,16 @@ const StyledTitle = styled.header`
   font-size: 40px;
   padding-left: 10%;
   text-align: center;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    :hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
 `;
 
 const Title = () => {
@@ -36,7 +46,9 @@ const Title = () => {
       ) : (
         "Pomodororo"
       )} */}
-      Pomokanban
+      <a href="https://pomokanban.com" rel="noopener noreferrer">
+        Pomokanban
+      </a>
     </StyledTitle>
   );
 };
