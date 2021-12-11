@@ -7,8 +7,10 @@ const StyledTitle = styled.header`
   width: auto;
   display: flex;
   align-items: center;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: -0.8px;
 
   a {
     color: #fff;
