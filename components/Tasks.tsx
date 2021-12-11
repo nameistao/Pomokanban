@@ -12,11 +12,11 @@ const Container = styled.div`
 `;
 
 const StyledSection = styled.section<{ color: string }>`
-  width: 60vw;
+  width: 50vw;
   height: 45vh;
   background-color: ${(props) => props.color};
   margin: 2.5vh auto auto auto;
-  border-radius: 20px;
+  border-radius: 6px;
   transition: background-color 0.7s ease;
 `;
 
