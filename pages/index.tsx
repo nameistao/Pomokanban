@@ -104,13 +104,16 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>
-          {(remainder < 0
-            ? "0:00"
-            : Math.floor(remainder / 60) +
+          {remainder < 0
+            ? "00:00"
+            : (Math.floor(remainder / 60) < 10
+                ? "0" + Math.floor(remainder / 60)
+                : Math.floor(remainder / 60)) +
               ":" +
               (Math.floor(remainder % 60) < 10
                 ? "0" + Math.floor(remainder % 60)
-                : Math.floor(remainder % 60))) + " - Pomodororo"}
+                : Math.floor(remainder % 60)) +
+              " - Pomokanban"}
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
