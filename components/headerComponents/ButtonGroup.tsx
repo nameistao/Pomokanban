@@ -4,8 +4,8 @@ import Settings from "components/icons/Settings";
 import User from "components/icons/User";
 
 const StyledButtonGroup = styled.div`
-  height: 65%;
-  width: 30%;
+  height: 60%;
+  width: 25%;
   display: flex;
   align-items: center;
   margin: auto;
@@ -26,15 +26,15 @@ const StyledButtonGroup = styled.div`
 `;
 
 const StyledInfoButton = styled.button`
-  border-top-left-radius: 7.5px;
-  border-bottom-left-radius: 7.5px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 `;
 
 const StyledSettingsButton = styled.button``;
 
 const StyledAccountButton = styled.button`
-  border-top-right-radius: 7.5px;
-  border-bottom-right-radius: 7.5px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 `;
 
 interface IProps {

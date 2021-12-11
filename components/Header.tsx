@@ -5,7 +5,7 @@ import ButtonGroup from "components/headerComponents/ButtonGroup";
 
 const StyledSection = styled.section`
   width: 60vw;
-  height: 10vh;
+  height: 7.5vh;
   margin: 0 auto 0 auto;
   color: #fff;
   display: flex;

@@ -3,11 +3,11 @@ import Times from "components/icons/Times";
 import { useState } from "react";
 
 const StyledSettingsModal = styled.section`
-  width: 60vw;
+  width: 50vw;
   height: 82.5vh;
   background-color: ${(props) => props.color};
   margin: auto;
-  border-radius: 20px;
+  border-radius: 6px;
   display: flex;
   align-items: end;
   flex-direction: column;

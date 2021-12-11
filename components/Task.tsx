@@ -6,7 +6,7 @@ const Container = styled.div<{ ref: any; isDragging: any; color: string }>`
   border: ${(props) => (props.isDragging ? "1px #fff solid" : "none")};
   margin-bottom: 8px;
   background-color: ${(props) => props.color};
-  border-radius: 7.5px;
+  border-radius: 4px;
   display: flex;
   justify-content: space-between;
   color: #fff;
@@ -15,7 +15,7 @@ const Container = styled.div<{ ref: any; isDragging: any; color: string }>`
 
 const RemoveButton = styled.button`
   height: 25x;
-  width: 25px;
+  width: 15%;
   background-color: inherit;
   border: none;
   border-radius: 5px;
@@ -24,6 +24,11 @@ const RemoveButton = styled.button`
   :hover {
     cursor: pointer;
   }
+`;
+
+const TaskText = styled.div`
+  overflow-wrap: break-word;
+  max-width: 82.5%;
 `;
 
 interface IProps {
@@ -69,7 +74,7 @@ const Task = ({ task, index, taskData, setTaskData, colorScheme }: IProps) => {
           isDragging={snapshot.isDragging}
           color={colorScheme[0]}
         >
-          {task.content}
+          <TaskText>{task.content}</TaskText>
           <RemoveButton onClick={removeTaskHandler}>x</RemoveButton>
         </Container>
       )}

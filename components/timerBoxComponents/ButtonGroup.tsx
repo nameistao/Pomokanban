@@ -16,7 +16,7 @@ const StyledButtonGroup = styled.div`
     height: 75%;
     border: none;
     transition: background-color 0.7s ease;
-    border-radius: 12px;
+    border-radius: 4px;
     font-size: 15px;
   }
 `;

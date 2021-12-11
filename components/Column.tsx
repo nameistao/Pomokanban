@@ -4,7 +4,7 @@ import { Droppable } from "react-beautiful-dnd";
 
 const Container = styled.div`
   margin: 8px;
-  border-radius: 20px;
+  border-radius: 4px;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -20,8 +20,8 @@ const TaskList = styled.div<{ ref: any; isDraggingOver: any }>`
   background-color: inherit;
   flex-grow: 1;
   min-height: 100px;
-  overflow: scroll;
-  border-radius: 20px;
+  overflow-y: scroll;
+  border-radius: 4px;
 `;
 
 interface IProps {
