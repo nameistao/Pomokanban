@@ -3,60 +3,72 @@ import Info from "components/icons/Info";
 import Settings from "components/icons/Settings";
 import User from "components/icons/User";
 
-const StyledButtonGroup = styled.div`
+const StyledButtonGroup = styled.div<{ color: string }>`
   height: 60%;
   width: 25%;
   display: flex;
-  align-items: center;
-  margin: auto;
+  margin: auto 0 auto 0;
+  justify-content: flex-end;
 
   button {
-    border: 1px solid #fff;
-    background-color: inherit;
+    border: none;
+    background-color: ${(props) => props.color};
     color: white;
     cursor: pointer;
     width: 33.333%;
     height: 100%;
+    transition: background-color 0.7s ease;
+    margin-left: 10px;
 
     :hover {
       background: #fff;
-      color: black;
+      color: ${(props) => props.color};
     }
   }
 `;
 
 const StyledInfoButton = styled.button`
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-radius: 4px;
 `;
 
-const StyledSettingsButton = styled.button``;
+const StyledSettingsButton = styled.button`
+  border-radius: 4px;
+`;
 
 const StyledAccountButton = styled.button`
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-radius: 4px;
 `;
 
 interface IProps {
   setShowModal: Function;
+  colorScheme: Array<string>;
 }
 
-const ButtonGroup = ({ setShowModal }: IProps) => {
+const ButtonGroup = ({ setShowModal, colorScheme }: IProps) => {
   const buttonHandler = (modalType) => {
     setShowModal(modalType);
   };
 
   return (
-    <StyledButtonGroup>
-      <StyledInfoButton onClick={() => buttonHandler("info")}>
+    <StyledButtonGroup color={colorScheme[1]}>
+      <StyledInfoButton
+        onClick={() => buttonHandler("info")}
+        aria-label="Information"
+      >
         <Info height={"75%"} />
       </StyledInfoButton>
-      <StyledSettingsButton onClick={() => buttonHandler("settings")}>
+      <StyledSettingsButton
+        onClick={() => buttonHandler("settings")}
+        aria-label="Settings"
+      >
         <Settings height={"75%"} />
       </StyledSettingsButton>
-      <StyledAccountButton onClick={() => buttonHandler("user")}>
+      {/* <StyledAccountButton
+        onClick={() => buttonHandler("user")}
+        aria-label="User"
+      >
         <User height={"75%"} />
-      </StyledAccountButton>
+      </StyledAccountButton> */}
     </StyledButtonGroup>
   );
 };

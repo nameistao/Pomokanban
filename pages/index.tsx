@@ -123,7 +123,7 @@ const Home: NextPage = () => {
       </Head>
       <StyledMain color={colorScheme[0]}>
         <LoadingBar progress={progress} />
-        <Header setShowModal={setShowModal} />
+        <Header setShowModal={setShowModal} colorScheme={colorScheme} />
         {showModal === "info" && (
           <InfoModal color={colorScheme} setShowModal={setShowModal} />
         )}

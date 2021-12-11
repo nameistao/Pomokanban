@@ -4,12 +4,13 @@ import styled from "styled-components";
 const StyledTitle = styled.header`
   color: #fff;
   height: 100%;
-  width: 50%;
+  width: auto;
   display: flex;
   align-items: center;
-  font-size: 40px;
-  padding-left: 10%;
+  font-size: 30px;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: -0.8px;
 
   a {
     color: #fff;
