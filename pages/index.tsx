@@ -80,6 +80,10 @@ const Home: NextPage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("taskData", JSON.stringify(taskData));
+  }, [taskData]);
+
   const startStopHandler = () => {
     if (startStop === "START") {
       //change button text to STOP
