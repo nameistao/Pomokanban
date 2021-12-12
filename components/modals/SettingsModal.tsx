@@ -51,6 +51,7 @@ const StyledModalContent = styled.div`
   height: 75%;
   border-radius: 7.5px;
   color: #fff;
+  font-size: 18px;
 `;
 
 const StyledRow = styled.div`
@@ -69,9 +70,16 @@ const StyledInput = styled.input`
   display: flex;
   align-items: center;
   height: 60%;
+  width: 15%;
+  text-align: center;
   margin: auto 0;
-  border-radius: 7.5px;
-  border: none;
+  border-radius: 4px;
+  border: 2px #fff solid;
+  padding-left: 10px;
+  background-color: inherit;
+  color: #fff;
+  font-size: 18px;
+  outline: none;
 `;
 
 const StyledSaveButtonWrapper = styled.div`
@@ -92,6 +100,7 @@ const StyledSaveButton = styled.button`
   :hover {
     cursor: pointer;
   }
+  margin-bottom: 4%;
 `;
 
 const HorizontalLine = styled.hr`

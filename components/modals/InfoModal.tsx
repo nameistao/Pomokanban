@@ -50,6 +50,7 @@ const StyledModalContent = styled.div`
   height: 85%;
   border-radius: 7.5px;
   color: #fff;
+  font-size: 18px;
 `;
 
 interface IProps {
