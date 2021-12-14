@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const StyledSettingsModal = styled.section`
   width: 50vw;
-  height: 87.5vh;
+  height: 89vh;
   background-color: ${(props) => props.color};
   margin: auto;
   border-radius: 6px;

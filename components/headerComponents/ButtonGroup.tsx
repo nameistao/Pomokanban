@@ -4,7 +4,7 @@ import Settings from "components/icons/Settings";
 import User from "components/icons/User";
 
 const StyledButtonGroup = styled.div<{ color: string }>`
-  height: 60%;
+  height: 100%;
   width: 25%;
   display: flex;
   margin: auto 0 auto 0;
@@ -55,13 +55,13 @@ const ButtonGroup = ({ setShowModal, colorScheme }: IProps) => {
         onClick={() => buttonHandler("info")}
         aria-label="Information"
       >
-        <Info height={"75%"} />
+        <Info height={"100%"} />
       </StyledInfoButton>
       <StyledSettingsButton
         onClick={() => buttonHandler("settings")}
         aria-label="Settings"
       >
-        <Settings height={"75%"} />
+        <Settings height={"100%"} />
       </StyledSettingsButton>
       {/* <StyledAccountButton
         onClick={() => buttonHandler("user")}

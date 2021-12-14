@@ -5,11 +5,11 @@ import Timer from "components/timerBoxComponents/Timer";
 import StartStopButton from "./timerBoxComponents/StartStopButton";
 
 const StyledSection = styled.section`
-  height: 35vh;
+  height: 32.5vh;
   width: 50vw;
   padding: 0 4vw 0 4vw;
   color: #fff;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 2vh auto;
   background-color: ${(props) => props.color};
   border-radius: 6px;
   display: flex;

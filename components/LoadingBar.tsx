@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyledLoadingBar = styled.section`
   width: 100vw;
   height: 2.5vh;
+  margin-bottom: 2vh;
 `;
 
 const StyledProgressBar = styled.section<{ barWidth: string }>`

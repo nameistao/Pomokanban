@@ -13,9 +13,9 @@ const Container = styled.div`
 
 const StyledSection = styled.section<{ color: string }>`
   width: 50vw;
-  height: 50vh;
+  height: 54.5vh;
   background-color: ${(props) => props.color};
-  margin: 2.5vh auto auto auto;
+  margin: 0 auto 0 auto;
   border-radius: 6px;
   transition: background-color 0.7s ease;
 `;
