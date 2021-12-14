@@ -109,7 +109,7 @@ const Home: NextPage = () => {
         );
 
         //if timer is up, end interval
-        if (elapsed === timers[curTimer]) {
+        if (elapsed >= timers[curTimer]) {
           clearInterval(interval);
         }
       }, 500);
