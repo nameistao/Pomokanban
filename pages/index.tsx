@@ -79,7 +79,7 @@ const Home: NextPage = () => {
     }
   }, [elapsed, curTimer]);
 
-  //set taskData in localStorage
+  //set taskData and timers in localStorage
   useEffect(() => {
     if (
       localStorage.getItem("taskData") !== null &&
@@ -87,11 +87,25 @@ const Home: NextPage = () => {
     ) {
       setTaskData(JSON.parse(localStorage.getItem("taskData")));
     }
+    if (
+      localStorage.getItem("timers") !== null &&
+      localStorage.getItem("timers") !== undefined
+    ) {
+      setTimers(JSON.parse(localStorage.getItem("timers")));
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("taskData", JSON.stringify(taskData));
   }, [taskData]);
+
+  useEffect(() => {
+    localStorage.setItem("timers", JSON.stringify(timers));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("timers", JSON.stringify(timers));
+  }, [timers]);
 
   //REFS
   const audio = useRef(null);

@@ -173,6 +173,7 @@ const SettingsModal = () => {
             type="number"
             ref={shortBreakRef}
             value={shortBreakInput}
+            onChange={shortBreakChangeHandler}
           />
         </StyledRow>
         <StyledRow>
@@ -183,6 +184,7 @@ const SettingsModal = () => {
             type="number"
             ref={longBreakRef}
             value={longBreakInput}
+            onChange={longBreakChangeHandler}
           />
         </StyledRow>
       </StyledModalContent>
