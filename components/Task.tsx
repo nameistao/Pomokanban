@@ -60,7 +60,6 @@ const Task = ({ task, index, taskData }: IProps) => {
     const idToRemove = task.id;
     const newTasks = taskData.tasks;
     delete newTasks[idToRemove];
-    console.log(removeTaskFromColumns(taskData.columns, idToRemove));
     setTaskData({
       ...taskData,
       tasks: newTasks,

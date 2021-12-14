@@ -1,8 +1,9 @@
 //packages
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Head from "next/head";
 import styled from "styled-components";
+import useSound from "use-sound";
 //Components
 import Context from "components/Context";
 import ProgressBar from "components/ProgressBar";
@@ -87,6 +88,9 @@ const Home: NextPage = () => {
     localStorage.setItem("taskData", JSON.stringify(taskData));
   }, [taskData]);
 
+  //REFS
+  const audio = useRef(null);
+
   //HANDLERS
   const startStopHandler = () => {
     if (startStop === "START") {
@@ -99,17 +103,17 @@ const Home: NextPage = () => {
 
       const interval = window.setInterval(() => {
         //update elapsed time
-        console.log(
-          timers[curTimer] - (end.getTime() - new Date().getTime()) / 1000
-        );
         setElapsed(
           Math.floor(
             timers[curTimer] - (end.getTime() - new Date().getTime()) / 1000
           )
         );
 
+        console.log(timers[curTimer], elapsed);
+
         //if timer is up, end interval
-        if (elapsed >= timers[curTimer]) {
+        if (new Date().getTime() >= end.getTime()) {
+          audio.current.play();
           clearInterval(interval);
         }
       }, 500);
@@ -144,6 +148,9 @@ const Home: NextPage = () => {
           content="Pomokanban is a free and customizable productivity app that includes both a pomodoro timer and kanban board!"
         />
       </Head>
+      <audio className="audio-element" ref={audio}>
+        <source src="/cuckoo-clock.mp3"></source>
+      </audio>
       <Context.Provider
         value={{
           elapsed,
