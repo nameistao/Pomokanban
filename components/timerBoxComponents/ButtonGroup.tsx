@@ -5,6 +5,12 @@ import styled from "styled-components";
 import Context from "components/Context";
 import Themes from "styles/Theme";
 
+const StyledTimerOptions = styled.section`
+  width: 100%;
+  height: 15%;
+  z-index: 2;
+`;
+
 const StyledButtonGroup = styled.div`
   height: 100%;
   width: 80%;
@@ -72,29 +78,31 @@ const ButtonGroup = () => {
   };
 
   return (
-    <StyledButtonGroup>
-      <PomodoroButton
-        onClick={() => changeTimerHandler("pomodoro")}
-        curTimer={curTimer}
-        color={theme.dark}
-      >
-        Pomodoro
-      </PomodoroButton>
-      <ShortBreakButton
-        onClick={() => changeTimerHandler("shortBreak")}
-        curTimer={curTimer}
-        color={theme.dark}
-      >
-        Short Break
-      </ShortBreakButton>
-      <LongBreakButton
-        onClick={() => changeTimerHandler("longBreak")}
-        curTimer={curTimer}
-        color={theme.dark}
-      >
-        Long Break
-      </LongBreakButton>
-    </StyledButtonGroup>
+    <StyledTimerOptions>
+      <StyledButtonGroup>
+        <PomodoroButton
+          onClick={() => changeTimerHandler("pomodoro")}
+          curTimer={curTimer}
+          color={theme.dark}
+        >
+          Pomodoro
+        </PomodoroButton>
+        <ShortBreakButton
+          onClick={() => changeTimerHandler("shortBreak")}
+          curTimer={curTimer}
+          color={theme.dark}
+        >
+          Short Break
+        </ShortBreakButton>
+        <LongBreakButton
+          onClick={() => changeTimerHandler("longBreak")}
+          curTimer={curTimer}
+          color={theme.dark}
+        >
+          Long Break
+        </LongBreakButton>
+      </StyledButtonGroup>
+    </StyledTimerOptions>
   );
 };
 

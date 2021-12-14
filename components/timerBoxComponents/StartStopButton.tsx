@@ -12,7 +12,10 @@ const StyledStartStopButtonWrapper = styled.section`
   align-items: center;
 `;
 
-const StyledStartStopButton = styled.button<{ color: string }>`
+const StyledStartStopButton = styled.button<{
+  color: string;
+  startStop: string;
+}>`
   width: 60%;
   height: 60%;
   margin: auto;
@@ -34,6 +37,9 @@ const StyledStartStopButton = styled.button<{ color: string }>`
     outline: none;
   }
   transition: color 0.7s ease;
+  transform: ${(props) => props.startStop === "STOP" && "translateY(8px)"};
+  box-shadow: ${(props) => props.startStop === "STOP" && "none"};
+  outline: ${(props) => props.startStop === "STOP" && "none"};
 `;
 
 const StartStopButton = () => {
@@ -41,7 +47,11 @@ const StartStopButton = () => {
 
   return (
     <StyledStartStopButtonWrapper>
-      <StyledStartStopButton onClick={startStopHandler} color={theme.light}>
+      <StyledStartStopButton
+        onClick={startStopHandler}
+        color={theme.light}
+        startStop={startStop}
+      >
         {startStop}
       </StyledStartStopButton>
     </StyledStartStopButtonWrapper>

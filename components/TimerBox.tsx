@@ -2,7 +2,7 @@
 import React, { MouseEventHandler, useContext } from "react";
 import styled from "styled-components";
 //components
-import TimerOptions from "components/timerBoxComponents/TimerOptions";
+import ButtonGroup from "components/timerBoxComponents/ButtonGroup";
 import Timer from "components/timerBoxComponents/Timer";
 import StartStopButton from "./timerBoxComponents/StartStopButton";
 import Context from "./Context";
@@ -25,7 +25,7 @@ const TimerBox = () => {
 
   return (
     <StyledSection color={theme.light}>
-      <TimerOptions />
+      <ButtonGroup />
       <Timer />
       <StartStopButton />
     </StyledSection>
