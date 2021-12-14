@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import Title from "components/headerComponents/Title";
-import ButtonGroup from "components/headerComponents/ButtonGroup";
+import Title from "components/Title";
+import ButtonGroup from "components/ButtonGroup";
 
 const StyledSection = styled.section`
   width: 50vw;
@@ -12,16 +12,11 @@ const StyledSection = styled.section`
   justify-content: space-between;
 `;
 
-interface IProps {
-  setShowModal: Function;
-  colorScheme: Array<string>;
-}
-
-const Header = ({ setShowModal, colorScheme }: IProps) => {
+const Header = () => {
   return (
     <StyledSection>
       <Title />
-      <ButtonGroup setShowModal={setShowModal} colorScheme={colorScheme} />
+      <ButtonGroup />
     </StyledSection>
   );
 };

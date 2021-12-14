@@ -1,5 +1,9 @@
+//packages
 import styled from "styled-components";
+import { useContext } from "react";
+//components
 import Times from "components/icons/Times";
+import Context from "components/Context";
 
 const StyledInfoModal = styled.section`
   width: 50vw;
@@ -53,18 +57,15 @@ const StyledModalContent = styled.div`
   font-size: 18px;
 `;
 
-interface IProps {
-  color: object;
-  setShowModal: Function;
-}
-
 const HorizontalLine = styled.hr`
   width: 90%;
 `;
 
-const InfoModal = ({ color, setShowModal }: IProps) => {
+const InfoModal = () => {
+  const { theme, setShowModal } = useContext(Context);
+
   return (
-    <StyledInfoModal color={color[1]}>
+    <StyledInfoModal color={theme.light}>
       <StyledTopRow>
         <StyledModalTitle>Information</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>

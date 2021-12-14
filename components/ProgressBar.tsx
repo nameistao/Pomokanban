@@ -1,3 +1,5 @@
+//packages
+import { FC } from "react";
 import styled from "styled-components";
 
 const StyledLoadingBar = styled.section`
@@ -11,13 +13,14 @@ const StyledProgressBar = styled.section<{ barWidth: string }>`
   background: #fff;
   width: ${(props) => props.barWidth};
   height: 2.5vh;
+  transition: width 0.5s ease;
 `;
 
 interface IProps {
   progress: number;
 }
 
-const LoadingBar = ({ progress }: IProps) => {
+const ProgressBar: FC<IProps> = ({ progress }) => {
   return (
     <StyledLoadingBar>
       <StyledProgressBar barWidth={progress + "vw"}></StyledProgressBar>
@@ -25,4 +28,4 @@ const LoadingBar = ({ progress }: IProps) => {
   );
 };
 
-export default LoadingBar;
+export default ProgressBar;

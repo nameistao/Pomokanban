@@ -1,8 +1,11 @@
-import React, { Dispatch, MouseEventHandler } from "react";
+//packages
+import React, { MouseEventHandler, useContext } from "react";
 import styled from "styled-components";
+//components
 import TimerOptions from "components/timerBoxComponents/TimerOptions";
 import Timer from "components/timerBoxComponents/Timer";
 import StartStopButton from "./timerBoxComponents/StartStopButton";
+import Context from "./Context";
 
 const StyledSection = styled.section`
   height: 32.5vh;
@@ -17,54 +20,14 @@ const StyledSection = styled.section`
   transition: background-color 0.7s ease;
 `;
 
-interface IProps {
-  colorScheme: Array<string>;
-  setColorScheme: Function;
-  startStop: string;
-  startStopHandler: MouseEventHandler;
-  remainder: number;
-  setRemainder: Function;
-  timers: Array<number>;
-  curTimer: string;
-  setCurTimer;
-  intervalId: number;
-  setTotal: Function;
-  setStartStop: Function;
-}
+const TimerBox = () => {
+  const { theme } = useContext(Context);
 
-const TimerBox = ({
-  colorScheme,
-  setColorScheme,
-  startStop,
-  startStopHandler,
-  remainder,
-  setRemainder,
-  timers,
-  curTimer,
-  setCurTimer,
-  intervalId,
-  setTotal,
-  setStartStop,
-}: IProps) => {
   return (
-    <StyledSection color={colorScheme[1]}>
-      <TimerOptions
-        setColorScheme={setColorScheme}
-        colorScheme={colorScheme}
-        setRemainder={setRemainder}
-        timers={timers}
-        curTimer={curTimer}
-        setCurTimer={setCurTimer}
-        intervalId={intervalId}
-        setTotal={setTotal}
-        setStartStop={setStartStop}
-      />
-      <Timer remainder={remainder} />
-      <StartStopButton
-        startStop={startStop}
-        startStopHandler={startStopHandler}
-        color={colorScheme[1]}
-      />
+    <StyledSection color={theme.light}>
+      <TimerOptions />
+      <Timer />
+      <StartStopButton />
     </StyledSection>
   );
 };

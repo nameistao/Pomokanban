@@ -1,5 +1,8 @@
-import { MouseEventHandler } from "react";
+//packages
+import { useContext } from "react";
 import styled from "styled-components";
+//components
+import Context from "components/Context";
 
 const StyledStartStopButtonWrapper = styled.section`
   width: 100%;
@@ -33,16 +36,12 @@ const StyledStartStopButton = styled.button<{ color: string }>`
   transition: color 0.7s ease;
 `;
 
-interface IProps {
-  startStop: string;
-  startStopHandler: MouseEventHandler;
-  color: string;
-}
+const StartStopButton = () => {
+  const { startStop, startStopHandler, theme } = useContext(Context);
 
-const StartStopButton = ({ startStop, startStopHandler, color }: IProps) => {
   return (
     <StyledStartStopButtonWrapper>
-      <StyledStartStopButton onClick={startStopHandler} color={color}>
+      <StyledStartStopButton onClick={startStopHandler} color={theme.light}>
         {startStop}
       </StyledStartStopButton>
     </StyledStartStopButtonWrapper>

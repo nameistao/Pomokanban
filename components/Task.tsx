@@ -1,5 +1,9 @@
+//packages
+import { useContext } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
+//components
+import Context from "./Context";
 
 const Container = styled.div<{ ref: any; isDragging: any; color: string }>`
   padding: 8px;
@@ -35,8 +39,6 @@ interface IProps {
   task: { content: string; id: string };
   index: any;
   taskData: { columnOrder: Array<string>; columns: object; tasks: any };
-  setTaskData: Function;
-  colorScheme: Array<string>;
 }
 
 const removeTaskFromColumns = (columns, idToRemove) => {
@@ -51,7 +53,9 @@ const removeTaskFromColumns = (columns, idToRemove) => {
   return columns;
 };
 
-const Task = ({ task, index, taskData, setTaskData, colorScheme }: IProps) => {
+const Task = ({ task, index, taskData }: IProps) => {
+  const { setTaskData, theme } = useContext(Context);
+
   const removeTaskHandler = () => {
     const idToRemove = task.id;
     const newTasks = taskData.tasks;
@@ -72,7 +76,7 @@ const Task = ({ task, index, taskData, setTaskData, colorScheme }: IProps) => {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
-          color={colorScheme[0]}
+          color={theme.dark}
         >
           <TaskText>{task.content}</TaskText>
           <RemoveButton onClick={removeTaskHandler}>x</RemoveButton>

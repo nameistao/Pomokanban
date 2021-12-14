@@ -1,9 +1,12 @@
+//packages
 import styled from "styled-components";
-import Column from "components/Column";
 import { DragDropContext } from "react-beautiful-dnd";
 import NoSSR from "react-no-ssr";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+//components
+import Column from "components/Column";
+import Context from "./Context";
 
 const Container = styled.div`
   display: flex;
@@ -49,13 +52,9 @@ const AddInput = styled.input`
   text-align: center;
 `;
 
-interface IProps {
-  taskData: { columnOrder: Array<string>; columns: object; tasks: any };
-  setTaskData: Function;
-  colorScheme: Array<string>;
-}
+const Tasks = () => {
+  const { taskData, setTaskData, theme } = useContext(Context);
 
-const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
   const [addValue, setAddValue] = useState("");
 
   const onEnterHandler = (event) => {
@@ -160,7 +159,7 @@ const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
 
   return (
     <NoSSR>
-      <StyledSection color={colorScheme[1]}>
+      <StyledSection color={theme.light}>
         <DragDropContext onDragEnd={onDragEndHandler}>
           <Container>
             {taskData.columnOrder.map((columnId) => {
@@ -174,8 +173,6 @@ const Tasks = ({ taskData, setTaskData, colorScheme }: IProps) => {
                   column={column}
                   tasks={tasks}
                   taskData={taskData}
-                  setTaskData={setTaskData}
-                  colorScheme={colorScheme}
                 />
               );
             })}

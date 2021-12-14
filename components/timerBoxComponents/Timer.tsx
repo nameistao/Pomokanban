@@ -1,4 +1,8 @@
+//packages
 import styled from "styled-components";
+import { useContext } from "react";
+//components
+import Context from "components/Context";
 
 const StyledTimerWrapper = styled.section`
   width: 100%;
@@ -13,23 +17,20 @@ const StyledTimer = styled.div`
   font-size: 10rem;
 `;
 
-interface IProps {
-  remainder: number;
-}
-
-const Timer = ({ remainder }: IProps) => {
+const Timer = () => {
+  const { elapsed, timers, curTimer } = useContext(Context);
   return (
     <StyledTimerWrapper>
       <StyledTimer>
-        {remainder < 0
+        {timers[curTimer] - elapsed < 0
           ? "00:00"
-          : (Math.floor(remainder / 60) < 10
-              ? "0" + Math.floor(remainder / 60)
-              : Math.floor(remainder / 60)) +
+          : (Math.floor((timers[curTimer] - elapsed) / 60) < 10
+              ? "0" + Math.floor((timers[curTimer] - elapsed) / 60)
+              : Math.floor((timers[curTimer] - elapsed) / 60)) +
             ":" +
-            (Math.floor(remainder % 60) < 10
-              ? "0" + Math.floor(remainder % 60)
-              : Math.floor(remainder % 60))}
+            (Math.floor((timers[curTimer] - elapsed) % 60) < 10
+              ? "0" + Math.floor((timers[curTimer] - elapsed) % 60)
+              : Math.floor((timers[curTimer] - elapsed) % 60))}
       </StyledTimer>
     </StyledTimerWrapper>
   );

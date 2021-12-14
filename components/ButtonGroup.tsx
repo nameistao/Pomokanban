@@ -1,7 +1,11 @@
+//packages
 import styled from "styled-components";
+//components
 import Info from "components/icons/Info";
 import Settings from "components/icons/Settings";
 import User from "components/icons/User";
+import Context from "./Context";
+import { useContext } from "react";
 
 const StyledButtonGroup = styled.div<{ color: string }>`
   height: 100%;
@@ -39,18 +43,15 @@ const StyledAccountButton = styled.button`
   border-radius: 4px;
 `;
 
-interface IProps {
-  setShowModal: Function;
-  colorScheme: Array<string>;
-}
+const ButtonGroup = () => {
+  const { setShowModal, theme } = useContext(Context);
 
-const ButtonGroup = ({ setShowModal, colorScheme }: IProps) => {
   const buttonHandler = (modalType) => {
     setShowModal(modalType);
   };
 
   return (
-    <StyledButtonGroup color={colorScheme[1]}>
+    <StyledButtonGroup color={theme.light}>
       <StyledInfoButton
         onClick={() => buttonHandler("info")}
         aria-label="Information"

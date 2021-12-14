@@ -1,6 +1,9 @@
+//packages
 import styled from "styled-components";
+import { useState, useContext, useRef } from "react";
+//components
 import Times from "components/icons/Times";
-import { useState } from "react";
+import Context from "components/Context";
 
 const StyledSettingsModal = styled.section`
   width: 50vw;
@@ -107,67 +110,42 @@ const HorizontalLine = styled.hr`
   width: 90%;
 `;
 
-interface IProps {
-  color: object;
-  setShowModal: Function;
-  timers: Array<number>;
-  setTimers: Function;
-  remainder: number;
-  setRemainder: Function;
-  total: number;
-  setTotal: Function;
-  curTimer: string;
-  startStopHandler: Function;
-}
+const SettingsModal = () => {
+  const { theme, setShowModal, timers, setTimers } = useContext(Context);
 
-const SettingsModal = ({
-  color,
-  setShowModal,
-  timers,
-  setTimers,
-  remainder,
-  setRemainder,
-  total,
-  setTotal,
-  curTimer,
-  startStopHandler,
-}: IProps) => {
-  const [pomodororoTime, setPomodororoTime] = useState(timers[0] / 60);
-  const [shortBreakTime, setShortBreakTime] = useState(timers[1] / 60);
-  const [longBreakTime, setLongBreakTime] = useState(timers[2] / 60);
+  const [pomodoroInput, setPomodoroInput] = useState(timers.pomodoro / 60);
+  const [shortBreakInput, setShortBreakInput] = useState(
+    timers.shortBreak / 60
+  );
+  const [longBreakInput, setLongBreakInput] = useState(timers.longBreak / 60);
 
-  const pomodororoTimeChangeHandler = (e) => {
-    setPomodororoTime(e.target.value);
-  };
-
-  const shortBreakTimeChangeHandler = (e) => {
-    setShortBreakTime(e.target.value);
-  };
-
-  const longBreakTimeChangeHandler = (e) => {
-    setLongBreakTime(e.target.value);
-  };
+  const pomodoroRef = useRef(null);
+  const shortBreakRef = useRef(null);
+  const longBreakRef = useRef(null);
 
   const saveHandler = () => {
-    setTimers([pomodororoTime * 60, shortBreakTime * 60, longBreakTime * 60]);
-    const elapsed = Math.floor(total - remainder);
-    switch (curTimer) {
-      case "pomodoro":
-        setTotal(pomodororoTime * 60);
-        setRemainder(pomodororoTime * 60 - elapsed);
-        break;
-      case "shortBreak":
-        setTotal(shortBreakTime * 60);
-        setRemainder(shortBreakTime * 60 - elapsed);
-        break;
-      case "longBreak":
-        setTotal(longBreakTime * 60);
-        setRemainder(longBreakTime * 60 - elapsed);
-        break;
-    }
+    setTimers({
+      pomodoro: pomodoroRef.current.value * 60,
+      shortBreak: shortBreakRef.current.value * 60,
+      longBreak: longBreakRef.current.value * 60,
+    });
+    setShowModal("");
   };
+
+  const pomodoroChangeHandler = (e) => {
+    setPomodoroInput(e.target.value);
+  };
+
+  const shortBreakChangeHandler = (e) => {
+    setShortBreakInput(e.target.value);
+  };
+
+  const longBreakChangeHandler = (e) => {
+    setLongBreakInput(e.target.value);
+  };
+
   return (
-    <StyledSettingsModal color={color[1]}>
+    <StyledSettingsModal color={theme.light}>
       <StyledTopRow>
         <StyledModalTitle>Settings</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>
@@ -182,8 +160,9 @@ const SettingsModal = ({
             required
             min="0"
             type="number"
-            value={pomodororoTime}
-            onChange={pomodororoTimeChangeHandler}
+            ref={pomodoroRef}
+            value={pomodoroInput}
+            onChange={pomodoroChangeHandler}
           />
         </StyledRow>
         <StyledRow>
@@ -192,8 +171,8 @@ const SettingsModal = ({
             required
             min="0"
             type="number"
-            value={shortBreakTime}
-            onChange={shortBreakTimeChangeHandler}
+            ref={shortBreakRef}
+            value={shortBreakInput}
           />
         </StyledRow>
         <StyledRow>
@@ -202,8 +181,8 @@ const SettingsModal = ({
             required
             min="0"
             type="number"
-            value={longBreakTime}
-            onChange={longBreakTimeChangeHandler}
+            ref={longBreakRef}
+            value={longBreakInput}
           />
         </StyledRow>
       </StyledModalContent>

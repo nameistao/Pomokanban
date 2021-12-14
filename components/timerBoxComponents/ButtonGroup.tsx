@@ -1,5 +1,9 @@
-import { Dispatch, MouseEventHandler } from "react";
+//packages
+import { useContext } from "react";
+//components
 import styled from "styled-components";
+import Context from "components/Context";
+import Themes from "styles/Theme";
 
 const StyledButtonGroup = styled.div`
   height: 100%;
@@ -48,73 +52,45 @@ interface IProps {
   setStartStop: Function;
 }
 
-const ButtonGroup = ({
-  setColorScheme,
-  colorScheme,
-  setRemainder,
-  timers,
-  curTimer,
-  setCurTimer,
-  intervalId,
-  setTotal,
-  setStartStop,
-}: IProps) => {
-  const changeTimerHandler = (timer, colorScheme) => {
-    setColorScheme(colorScheme);
+const ButtonGroup = () => {
+  const {
+    theme,
+    setTheme,
+    curTimer,
+    setCurTimer,
+    intervalId,
+    setStartStop,
+    setElapsed,
+  } = useContext(Context);
+
+  const changeTimerHandler = (timer) => {
+    setTheme(Themes[timer]);
+    setElapsed(0);
     setCurTimer(timer);
     clearInterval(intervalId);
     setStartStop("START");
-    switch (timer) {
-      case "pomodoro":
-        setRemainder(timers[0]);
-        setTotal(timers[0]);
-        break;
-      case "shortBreak":
-        setRemainder(timers[1]);
-        setTotal(timers[1]);
-        break;
-      case "longBreak":
-        setRemainder(timers[2]);
-        setTotal(timers[2]);
-        break;
-    }
   };
 
   return (
     <StyledButtonGroup>
       <PomodoroButton
-        onClick={() =>
-          changeTimerHandler("pomodoro", [
-            "rgb(47, 128, 109)",
-            "rgb(55, 149, 127)",
-          ])
-        }
+        onClick={() => changeTimerHandler("pomodoro")}
         curTimer={curTimer}
-        color={colorScheme[0]}
+        color={theme.dark}
       >
         Pomodoro
       </PomodoroButton>
       <ShortBreakButton
-        onClick={() =>
-          changeTimerHandler("shortBreak", [
-            "rgb(14, 85, 94)",
-            "rgb(19, 112, 124)",
-          ])
-        }
+        onClick={() => changeTimerHandler("shortBreak")}
         curTimer={curTimer}
-        color={colorScheme[0]}
+        color={theme.dark}
       >
         Short Break
       </ShortBreakButton>
       <LongBreakButton
-        onClick={() =>
-          changeTimerHandler("longBreak", [
-            "rgb(22, 71, 121)",
-            "rgb(25, 82, 138)",
-          ])
-        }
+        onClick={() => changeTimerHandler("longBreak")}
         curTimer={curTimer}
-        color={colorScheme[0]}
+        color={theme.dark}
       >
         Long Break
       </LongBreakButton>

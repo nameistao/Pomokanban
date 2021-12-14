@@ -1,6 +1,7 @@
+//packages
 import styled from "styled-components";
+//components
 import ButtonGroup from "components/timerBoxComponents/ButtonGroup";
-import { MouseEventHandler } from "react";
 
 const StyledTimerOptions = styled.section`
   width: 100%;
@@ -8,42 +9,10 @@ const StyledTimerOptions = styled.section`
   z-index: 2;
 `;
 
-interface IProps {
-  setColorScheme: Function;
-  colorScheme: Array<string>;
-  setRemainder: Function;
-  timers: Array<number>;
-  curTimer: string;
-  setCurTimer: Function;
-  intervalId: number;
-  setTotal: Function;
-  setStartStop: Function;
-}
-
-const TimerOptions = ({
-  setRemainder,
-  setColorScheme,
-  colorScheme,
-  timers,
-  curTimer,
-  setCurTimer,
-  intervalId,
-  setTotal,
-  setStartStop,
-}: IProps) => {
+const TimerOptions = () => {
   return (
     <StyledTimerOptions>
-      <ButtonGroup
-        setColorScheme={setColorScheme}
-        colorScheme={colorScheme}
-        setRemainder={setRemainder}
-        timers={timers}
-        curTimer={curTimer}
-        setCurTimer={setCurTimer}
-        intervalId={intervalId}
-        setTotal={setTotal}
-        setStartStop={setStartStop}
-      />
+      <ButtonGroup />
     </StyledTimerOptions>
   );
 };

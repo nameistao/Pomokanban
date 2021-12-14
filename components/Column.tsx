@@ -1,6 +1,9 @@
+//packages
+import { FC } from "react";
 import styled from "styled-components";
-import Task from "components/Task";
 import { Droppable } from "react-beautiful-dnd";
+//components
+import Task from "components/Task";
 
 const Container = styled.div`
   margin: 8px;
@@ -9,7 +12,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Title = styled.h3`
+const Title = styled.div`
   padding: 8px;
   text-align: center;
   color: #fff;
@@ -28,17 +31,9 @@ interface IProps {
   column: { title: string; id: string };
   tasks: Array<{ id: string; content: string }>;
   taskData: { columnOrder: Array<string>; columns: object; tasks: any };
-  setTaskData: Function;
-  colorScheme: Array<string>;
 }
 
-const Column = ({
-  column,
-  tasks,
-  taskData,
-  setTaskData,
-  colorScheme,
-}: IProps) => {
+const Column: FC<IProps> = ({ column, tasks, taskData }) => {
   return (
     <Container>
       <Title>{column.title}</Title>
@@ -55,8 +50,6 @@ const Column = ({
                 task={task}
                 index={index}
                 taskData={taskData}
-                setTaskData={setTaskData}
-                colorScheme={colorScheme}
               />
             ))}
             {provided.placeholder}

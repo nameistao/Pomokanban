@@ -1,5 +1,9 @@
+//packages
+import Context from "components/Context";
+//components
 import styled from "styled-components";
 import Times from "components/icons/Times";
+import { useContext } from "react";
 
 const StyledUserModal = styled.section`
   width: 50vw;
@@ -52,14 +56,11 @@ const StyledModalContent = styled.div`
   color: #fff;
 `;
 
-interface IProps {
-  color: object;
-  setShowModal: Function;
-}
+const UserModal = () => {
+  const { theme, setShowModal } = useContext(Context);
 
-const UserModal = ({ color, setShowModal }: IProps) => {
   return (
-    <StyledUserModal color={color[1]}>
+    <StyledUserModal color={theme.dark}>
       <StyledTopRow>
         <StyledModalTitle>User</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>
