@@ -125,9 +125,9 @@ const SettingsModal = () => {
 
   const saveHandler = () => {
     setTimers({
-      pomodoro: pomodoroRef.current.value * 60,
-      shortBreak: shortBreakRef.current.value * 60,
-      longBreak: longBreakRef.current.value * 60,
+      pomodoro: Math.max(6, pomodoroRef.current.value * 60),
+      shortBreak: Math.max(6, shortBreakRef.current.value * 60),
+      longBreak: Math.max(6, longBreakRef.current.value * 60),
     });
     setShowModal("");
   };
@@ -158,7 +158,7 @@ const SettingsModal = () => {
           <StyledTextBox>Pomodororo</StyledTextBox>
           <StyledInput
             required
-            min="0"
+            min="1"
             type="number"
             ref={pomodoroRef}
             value={pomodoroInput}
@@ -169,7 +169,7 @@ const SettingsModal = () => {
           <StyledTextBox>Short Break</StyledTextBox>
           <StyledInput
             required
-            min="0"
+            min="1"
             type="number"
             ref={shortBreakRef}
             value={shortBreakInput}
@@ -180,7 +180,7 @@ const SettingsModal = () => {
           <StyledTextBox>Long Break</StyledTextBox>
           <StyledInput
             required
-            min="0"
+            min="1"
             type="number"
             ref={longBreakRef}
             value={longBreakInput}
