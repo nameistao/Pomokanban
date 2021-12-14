@@ -72,6 +72,11 @@ const Home: NextPage = () => {
   //EFFECTS
   useEffect(() => {
     setProgress((elapsed / timers[curTimer]) * 100);
+    if (elapsed === timers[curTimer]) {
+      audio.current.play();
+      startStopHandler();
+      setElapsed(0);
+    }
   }, [elapsed, curTimer]);
 
   //set taskData in localStorage
@@ -113,7 +118,6 @@ const Home: NextPage = () => {
 
         //if timer is up, end interval
         if (new Date().getTime() >= end.getTime()) {
-          audio.current.play();
           clearInterval(interval);
         }
       }, 500);
