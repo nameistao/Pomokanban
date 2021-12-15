@@ -13,6 +13,7 @@ import SettingsModal from "components/modals/SettingsModal";
 import UserModal from "components/modals/UserModal";
 import TimerBox from "components/TimerBox";
 import Tasks from "components/Tasks";
+import Themes from "styles/Theme";
 //Hooks
 import useKeyPress from "hooks/useKeyPress";
 
@@ -89,13 +90,30 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (pressedS && allowKeys) {
-      console.log("pressed s");
+      let timer;
+      switch (curTimer) {
+        case "pomodoro":
+          timer = "shortBreak";
+          break;
+        case "shortBreak":
+          timer = "longBreak";
+          break;
+        case "longBreak":
+          timer = "pomodoro";
+      }
+
+      setTheme(Themes[timer]);
+      setElapsed(0);
+      setCurTimer(timer);
+      if (startStop === "STOP") {
+        startStopHandler();
+      }
     }
-  }, [pressedSpace]);
+  }, [pressedS]);
 
   useEffect(() => {
     if (pressedSpace && allowKeys) {
-      console.log("pressed space");
+      startStopHandler();
     }
   }, [pressedSpace]);
 

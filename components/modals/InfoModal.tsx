@@ -78,10 +78,25 @@ const InfoModal = () => {
         <p>
           - Break down your tasks into manageable chunks of work and breaks.
         </p>
-        <p>- Features:</p>
+        <p>
+          -{" "}
+          <b>
+            <u>Features:</u>
+          </b>
+        </p>
         <p>- Customizable Countdown Timers</p>
         <p>- Progress Bar</p>
         <p>- Kanban Board</p>
+
+        <p>
+          -{" "}
+          <b>
+            <u>Hotkeys:</u>
+          </b>
+        </p>
+        <p>- Spacebar &#8594; Start/Stop</p>
+        <p>- R &#8594; Restart Timer</p>
+        <p>- S &#8594; Skip Timer</p>
       </StyledModalContent>
     </StyledInfoModal>
   );
