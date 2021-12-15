@@ -124,7 +124,7 @@ const StartStopButton = () => {
   return (
     <StyledStartStopButtonWrapper>
       <ButtonWrapper>
-        <RestartButton onClick={restartHandler}>
+        <RestartButton onClick={restartHandler} aria-label="Restart Timer">
           <Repeat color={"#fff"} />
         </RestartButton>
       </ButtonWrapper>
@@ -136,7 +136,10 @@ const StartStopButton = () => {
         {startStop}
       </StyledStartStopButton>
       <ButtonWrapper>
-        <StepForwardButton onClick={changeTimerHandler}>
+        <StepForwardButton
+          onClick={changeTimerHandler}
+          aria-label="Step Forward"
+        >
           <StepForward color={"#fff"} />
         </StepForwardButton>
       </ButtonWrapper>
