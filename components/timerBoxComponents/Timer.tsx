@@ -15,6 +15,7 @@ const StyledTimerWrapper = styled.section`
 const StyledTimer = styled.div`
   width: 100%;
   font-size: 10rem;
+  margin-top: 12px;
 `;
 
 const Timer = () => {
