@@ -66,6 +66,7 @@ const StyledStartStopButton = styled.button<{
   box-shadow: rgb(235, 235, 235) 0px 8px 0px;
   font-size: 30px;
   font-weight: 900;
+  outline: none;
   :hover {
     background-color: #fff;
     cursor: pointer;
@@ -73,12 +74,10 @@ const StyledStartStopButton = styled.button<{
   :active {
     transform: translateY(8px);
     box-shadow: none;
-    outline: none;
   }
   transition: color 0.7s ease;
   transform: ${(props) => props.startStop === "STOP" && "translateY(8px)"};
   box-shadow: ${(props) => props.startStop === "STOP" && "none"};
-  outline: ${(props) => props.startStop === "STOP" && "none"};
 `;
 
 const StartStopButton = () => {

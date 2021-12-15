@@ -13,6 +13,8 @@ import SettingsModal from "components/modals/SettingsModal";
 import UserModal from "components/modals/UserModal";
 import TimerBox from "components/TimerBox";
 import Tasks from "components/Tasks";
+//Hooks
+import useKeyPress from "hooks/useKeyPress";
 
 const StyledMain = styled.main<{ color: string }>`
   height: 100vh;
@@ -68,6 +70,34 @@ const Home: NextPage = () => {
     },
     columnOrder: ["column-1", "column-2", "column-3"],
   });
+
+  const [allowKeys, setAllowKeys] = useState(true);
+
+  //KEY PRESS EFFECTS
+  const pressedR = useKeyPress("r");
+  const pressedS = useKeyPress("s");
+  const pressedSpace = useKeyPress(" ");
+
+  useEffect(() => {
+    if (pressedR && allowKeys) {
+      if (startStop === "STOP") {
+        startStopHandler();
+      }
+      setElapsed(0);
+    }
+  }, [pressedR]);
+
+  useEffect(() => {
+    if (pressedS && allowKeys) {
+      console.log("pressed s");
+    }
+  }, [pressedSpace]);
+
+  useEffect(() => {
+    if (pressedSpace && allowKeys) {
+      console.log("pressed space");
+    }
+  }, [pressedSpace]);
 
   //EFFECTS
   useEffect(() => {
@@ -128,8 +158,6 @@ const Home: NextPage = () => {
           )
         );
 
-        console.log(timers[curTimer], elapsed);
-
         //if timer is up, end interval
         if (new Date().getTime() >= end.getTime()) {
           clearInterval(interval);
@@ -186,6 +214,8 @@ const Home: NextPage = () => {
           setElapsed,
           taskData,
           setTaskData,
+          allowKeys,
+          setAllowKeys,
         }}
       >
         <StyledMain color={theme.dark}>

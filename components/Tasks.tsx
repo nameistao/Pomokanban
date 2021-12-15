@@ -53,9 +53,21 @@ const AddInput = styled.input`
 `;
 
 const Tasks = () => {
-  const { taskData, setTaskData, theme } = useContext(Context);
+  //CONTEXT
+  const { taskData, setTaskData, theme, allowKeys, setAllowKeys } =
+    useContext(Context);
 
+  //STATES
   const [addValue, setAddValue] = useState("");
+
+  //HANDLERS
+  const addTaskFocusHandler = () => {
+    setAllowKeys(false);
+  };
+
+  const addTaskBlurHandler = () => {
+    setAllowKeys(true);
+  };
 
   const onEnterHandler = (event) => {
     if (event.charCode === 13) {
@@ -193,6 +205,8 @@ const Tasks = () => {
             &#8629;"
             required
             onKeyPress={onEnterHandler}
+            onFocus={addTaskFocusHandler}
+            onBlur={addTaskBlurHandler}
           ></AddInput>
         </AddRow>
       </StyledSection>
