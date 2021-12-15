@@ -4,6 +4,7 @@ import styled from "styled-components";
 //components
 import Context from "components/Context";
 import Repeat from "components/icons/Repeat";
+import { start } from "repl";
 
 const StyledStartStopButtonWrapper = styled.section`
   width: 100%;
@@ -65,7 +66,9 @@ const StartStopButton = () => {
     useContext(Context);
 
   const restartHandler = () => {
-    startStopHandler();
+    if (startStop === "STOP") {
+      startStopHandler();
+    }
     setElapsed(0);
   };
 
