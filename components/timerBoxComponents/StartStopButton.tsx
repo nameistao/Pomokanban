@@ -23,10 +23,10 @@ const RestartButtonWrapper = styled.div`
 
 const RestartButton = styled.button`
   height: fit-content;
-  width: 50%;
+  width: 50px;
   background-color: inherit;
   border: none;
-  margin: 20px auto auto auto;
+  margin: 16px auto auto auto;
   :hover {
     cursor: pointer;
   }
