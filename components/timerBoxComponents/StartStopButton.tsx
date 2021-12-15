@@ -3,6 +3,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 //components
 import Context from "components/Context";
+import Repeat from "components/icons/Repeat";
 
 const StyledStartStopButtonWrapper = styled.section`
   width: 100%;
@@ -12,13 +13,30 @@ const StyledStartStopButtonWrapper = styled.section`
   align-items: center;
 `;
 
+const RestartButtonWrapper = styled.div`
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  height: 60%;
+`;
+
+const RestartButton = styled.button`
+  height: fit-content;
+  width: 50%;
+  background-color: inherit;
+  border: none;
+  margin: 20px auto auto auto;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 const StyledStartStopButton = styled.button<{
   color: string;
   startStop: string;
 }>`
   width: 60%;
   height: 60%;
-  margin: auto;
   border-radius: 4px;
   background-color: inherit;
   border: 1px #fff solid;
@@ -43,10 +61,21 @@ const StyledStartStopButton = styled.button<{
 `;
 
 const StartStopButton = () => {
-  const { startStop, startStopHandler, theme } = useContext(Context);
+  const { startStop, startStopHandler, theme, setElapsed } =
+    useContext(Context);
+
+  const restartHandler = () => {
+    startStopHandler();
+    setElapsed(0);
+  };
 
   return (
     <StyledStartStopButtonWrapper>
+      <RestartButtonWrapper>
+        <RestartButton onClick={restartHandler}>
+          <Repeat color={"#fff"} />
+        </RestartButton>
+      </RestartButtonWrapper>
       <StyledStartStopButton
         onClick={startStopHandler}
         color={theme.light}

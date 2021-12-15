@@ -6,6 +6,7 @@ import ButtonGroup from "components/timerBoxComponents/ButtonGroup";
 import Timer from "components/timerBoxComponents/Timer";
 import StartStopButton from "./timerBoxComponents/StartStopButton";
 import Context from "./Context";
+import Repeat from "components/icons/Repeat";
 
 const StyledSection = styled.section`
   height: 32.5vh;
