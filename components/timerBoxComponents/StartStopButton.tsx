@@ -4,7 +4,8 @@ import styled from "styled-components";
 //components
 import Context from "components/Context";
 import Repeat from "components/icons/Repeat";
-import { start } from "repl";
+import StepForward from "components/icons/StepForward";
+import Themes from "styles/Theme";
 
 const StyledStartStopButtonWrapper = styled.section`
   width: 100%;
@@ -14,7 +15,7 @@ const StyledStartStopButtonWrapper = styled.section`
   align-items: center;
 `;
 
-const RestartButtonWrapper = styled.div`
+const ButtonWrapper = styled.div`
   width: 20%;
   display: flex;
   flex-direction: row;
@@ -29,6 +30,25 @@ const RestartButton = styled.button`
   margin: 16px auto auto auto;
   :hover {
     cursor: pointer;
+    opacity: 60%;
+  }
+  :active {
+    opacity: 100%;
+  }
+`;
+
+const StepForwardButton = styled.button`
+  height: fit-content;
+  width: 50px;
+  background-color: inherit;
+  border: none;
+  margin: 12px auto auto auto;
+  :hover {
+    cursor: pointer;
+    opacity: 60%;
+  }
+  :active {
+    opacity: 100%;
   }
 `;
 
@@ -62,8 +82,15 @@ const StyledStartStopButton = styled.button<{
 `;
 
 const StartStopButton = () => {
-  const { startStop, startStopHandler, theme, setElapsed } =
-    useContext(Context);
+  const {
+    startStop,
+    startStopHandler,
+    theme,
+    setElapsed,
+    setTheme,
+    curTimer,
+    setCurTimer,
+  } = useContext(Context);
 
   const restartHandler = () => {
     if (startStop === "STOP") {
@@ -72,13 +99,34 @@ const StartStopButton = () => {
     setElapsed(0);
   };
 
+  const changeTimerHandler = () => {
+    let timer;
+    switch (curTimer) {
+      case "pomodoro":
+        timer = "shortBreak";
+        break;
+      case "shortBreak":
+        timer = "longBreak";
+        break;
+      case "longBreak":
+        timer = "pomodoro";
+    }
+
+    setTheme(Themes[timer]);
+    setElapsed(0);
+    setCurTimer(timer);
+    if (startStop === "STOP") {
+      startStopHandler();
+    }
+  };
+
   return (
     <StyledStartStopButtonWrapper>
-      <RestartButtonWrapper>
+      <ButtonWrapper>
         <RestartButton onClick={restartHandler}>
           <Repeat color={"#fff"} />
         </RestartButton>
-      </RestartButtonWrapper>
+      </ButtonWrapper>
       <StyledStartStopButton
         onClick={startStopHandler}
         color={theme.light}
@@ -86,6 +134,11 @@ const StartStopButton = () => {
       >
         {startStop}
       </StyledStartStopButton>
+      <ButtonWrapper>
+        <StepForwardButton onClick={changeTimerHandler}>
+          <StepForward color={"#fff"} />
+        </StepForwardButton>
+      </ButtonWrapper>
     </StyledStartStopButtonWrapper>
   );
 };
