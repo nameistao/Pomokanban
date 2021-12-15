@@ -69,13 +69,18 @@ const Tasks = () => {
   };
 
   const addTaskHandler = async () => {
-    if (addValue === undefined || addValue === null || addValue === "") {
+    if (
+      addValue === undefined ||
+      addValue === null ||
+      addValue === "" ||
+      !/\S/.test(addValue)
+    ) {
       return;
     }
 
     const keyName = uuidv4();
     const tasks = {
-      [keyName]: { id: keyName, content: addValue },
+      [keyName]: { id: keyName, content: addValue.trim() },
       ...taskData.tasks,
     };
     const columns = {
