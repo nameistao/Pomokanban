@@ -28,6 +28,7 @@ const RestartButton = styled.button`
   background-color: inherit;
   border: none;
   margin: 16px auto auto auto;
+  outline: none;
   :hover {
     cursor: pointer;
     opacity: 60%;
@@ -43,6 +44,7 @@ const StepForwardButton = styled.button`
   background-color: inherit;
   border: none;
   margin: 12px auto auto auto;
+  outline: none;
   :hover {
     cursor: pointer;
     opacity: 60%;

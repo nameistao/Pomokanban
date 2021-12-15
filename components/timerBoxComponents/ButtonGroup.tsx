@@ -20,6 +20,7 @@ const StyledButtonGroup = styled.div`
   justify-content: space-between;
 
   button {
+    outline: none;
     color: white;
     cursor: pointer;
     width: 30%;
