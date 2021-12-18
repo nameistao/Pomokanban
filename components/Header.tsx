@@ -7,7 +7,7 @@ import ButtonGroup from "components/ButtonGroup";
 import Context from "./Context";
 
 const StyledSection = styled.section<{ innerHeight: number }>`
-  width: 60vw;
+  width: 70vw;
   height: calc(${(props) => String(props.innerHeight) + "px"} * 0.025);
   margin-left: auto;
   margin-right: auto;

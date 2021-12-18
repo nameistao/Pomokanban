@@ -10,7 +10,7 @@ const StyledTimerWrapper = styled.section`
   display: flex;
   align-items: center;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 6px;
   padding-top: 6px;
   :hover {
     cursor: pointer;
@@ -39,7 +39,7 @@ const EditModeInput = styled.input`
   background-color: inherit;
   text-align: center;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   outline: none;
   color: #fff;
   font-size: 8rem;

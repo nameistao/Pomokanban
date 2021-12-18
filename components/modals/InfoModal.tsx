@@ -6,7 +6,7 @@ import Times from "components/icons/Times";
 import Context from "components/Context";
 
 const StyledInfoModal = styled.section<{ innerHeight: number }>`
-  width: 60vw;
+  width: 70vw;
   height: calc(${(props) => String(props.innerHeight) + "px"} * 0.89);
   background-color: ${(props) => props.color};
   margin: auto;

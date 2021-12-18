@@ -10,8 +10,8 @@ import Repeat from "components/icons/Repeat";
 
 const StyledSection = styled.section<{ innerHeight: number }>`
   height: calc(${(props) => String(props.innerHeight) + "px"} * 0.325);
-  width: 60vw;
-  padding: 0 4vw 0 4vw;
+  width: 70vw;
+  padding: 0 4vw;
   color: #fff;
   margin-left: auto; 
   margin-right auto;
@@ -23,6 +23,7 @@ const StyledSection = styled.section<{ innerHeight: number }>`
   transition: background-color 0.7s ease;
   @media (max-width: 1024px) {
     width: 90vw;
+    padding: 0 1vw;
   }
   @media (max-width: 480px) {
     width: 95vw;

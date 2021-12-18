@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const StyledSection = styled.section<{ color: string; innerHeight: number }>`
-  width: 60vw;
+  width: 70vw;
   height: calc(${(props) => String(props.innerHeight) + "px"} * 0.545);
   background-color: ${(props) => props.color};
   margin: 0 auto 0 auto;
