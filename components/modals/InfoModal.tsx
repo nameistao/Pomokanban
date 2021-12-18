@@ -6,8 +6,8 @@ import Times from "components/icons/Times";
 import Context from "components/Context";
 
 const StyledInfoModal = styled.section`
-  width: 50vw;
-  height: 89%;
+  width: 60vw;
+  height: 89vh;
   background-color: ${(props) => props.color};
   margin: auto;
   border-radius: 6px;

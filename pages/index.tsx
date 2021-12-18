@@ -23,7 +23,7 @@ const StyledMain = styled.main<{ color: string; innerHeight: number }>`
   transition: background-color 0.7s ease;
   font-family: Arial;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1024px) {
     height: ${(props) =>
       typeof props.innerHeight !== "undefined"
         ? String(props.innerHeight) + "px"
