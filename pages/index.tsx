@@ -237,10 +237,6 @@ const Home: NextPage = () => {
           name="description"
           content="Pomokanban is a free and customizable productivity app that includes both a pomodoro timer and kanban board!"
         />
-        <meta
-          http-equiv="Content-Security-Policy"
-          content="default-src 'self';"
-        ></meta>
       </Head>
       <audio className="audio-element" ref={audio}>
         <source src="/cuckoo-clock.mp3"></source>
