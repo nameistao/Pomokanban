@@ -16,12 +16,16 @@ import Themes from "styles/Theme";
 //Hooks
 import useKeyPress from "hooks/useKeyPress";
 
-const StyledMain = styled.main<{ color: string }>`
+const StyledMain = styled.main<{ color: string; innerHeight: number }>`
   height: 100vh;
   width: 100vw;
   background-color: ${(props) => props.color};
   transition: background-color 0.7s ease;
   font-family: Arial;
+
+  @media (max-width: 1280px) {
+    height: ${typeof innerHeight !== "undefined" && String(innerHeight) + "px"};
+  }
 `;
 
 const Home: NextPage = () => {
@@ -74,6 +78,8 @@ const Home: NextPage = () => {
   const [allowKeys, setAllowKeys] = useState(true);
 
   const [editMode, setEditMode] = useState(false);
+
+  const [innerHeight, setInnerHeight] = useState(null);
 
   //KEY PRESS EFFECTS
   const pressedR = useKeyPress("r");
@@ -136,6 +142,10 @@ const Home: NextPage = () => {
   }, [pressedSpace]);
 
   //EFFECTS
+  useEffect(() => {
+    setInnerHeight(window.innerHeight);
+  }, []);
+
   useEffect(() => {
     if (showModal !== "") {
       setAllowKeys(false);
@@ -265,7 +275,7 @@ const Home: NextPage = () => {
           editTimerRef,
         }}
       >
-        <StyledMain color={theme.dark}>
+        <StyledMain color={theme.dark} innerHeight={innerHeight}>
           <ProgressBar progress={progress} />
           <Header />
           {showModal === "info" && <InfoModal />}
