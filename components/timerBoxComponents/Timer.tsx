@@ -38,13 +38,18 @@ const EditModeInput = styled.input`
   text-align: center;
   border: none;
   border-radius: 4px;
-  outline: #fff 2px solid;
+  outline: none;
   color: #fff;
   font-size: 10rem;
   ::placeholder {
     color: #fff;
     opacity: 50%;
     text-align: center;
+  }
+  :focus {
+    ::placeholder {
+      color: transparent;
+    }
   }
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
@@ -71,6 +76,7 @@ const Timer = () => {
         min="1"
         placeholder={String(Math.floor(timers[curTimer] / 60))}
         ref={editTimerRef}
+        //onBlur={() => alert("here")}
         autoFocus
       ></EditModeInput>
     </EditModeWrapper>
