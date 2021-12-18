@@ -74,10 +74,6 @@ const InfoModal = () => {
       </StyledTopRow>
       <HorizontalLine />
       <StyledModalContent>
-        <p>- Pomokanban is a productivity tool for managing your work.</p>
-        <p>
-          - Break down your tasks into manageable chunks of work and breaks.
-        </p>
         <p>
           -{" "}
           <b>
@@ -87,7 +83,14 @@ const InfoModal = () => {
         <p>- Customizable Countdown Timers</p>
         <p>- Progress Bar</p>
         <p>- Kanban Board</p>
-
+        <p>
+          -{" "}
+          <b>
+            <u>Instructions:</u>
+          </b>
+        </p>
+        <p>- Click the timer to edit timer</p>
+        <p>- Click "Add To Do" to add a task</p>
         <p>
           -{" "}
           <b>
