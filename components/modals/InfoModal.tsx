@@ -7,7 +7,7 @@ import Context from "components/Context";
 
 const StyledInfoModal = styled.section`
   width: 50vw;
-  height: 89vh;
+  height: 89%;
   background-color: ${(props) => props.color};
   margin: auto;
   border-radius: 6px;
