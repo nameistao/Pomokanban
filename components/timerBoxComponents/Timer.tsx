@@ -1,6 +1,6 @@
 //packages
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 //components
 import Context from "components/Context";
 
@@ -10,6 +10,9 @@ const StyledTimerWrapper = styled.section`
   display: flex;
   align-items: center;
   text-align: center;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledTimer = styled.div`
@@ -18,10 +21,65 @@ const StyledTimer = styled.div`
   margin-top: 12px;
 `;
 
+const EditModeWrapper = styled.section`
+  width: 100%;
+  height: 50%;
+  font-size: 10rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+`;
+
+const EditModeInput = styled.input`
+  width: 100%;
+  height: 100%;
+  margin-top: 12px;
+  background-color: inherit;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  outline: #fff 2px solid;
+  color: #fff;
+  font-size: 10rem;
+  ::placeholder {
+    color: #fff;
+    opacity: 50%;
+    text-align: center;
+  }
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
 const Timer = () => {
-  const { elapsed, timers, curTimer } = useContext(Context);
-  return (
-    <StyledTimerWrapper>
+  const {
+    elapsed,
+    timers,
+    curTimer,
+    setAllowKeys,
+    editMode,
+    setEditMode,
+    editTimerRef,
+  } = useContext(Context);
+
+  return editMode ? (
+    <EditModeWrapper>
+      <EditModeInput
+        type="number"
+        min="1"
+        placeholder={String(Math.floor(timers[curTimer] / 60))}
+        ref={editTimerRef}
+      ></EditModeInput>
+    </EditModeWrapper>
+  ) : (
+    <StyledTimerWrapper
+      onClick={() => {
+        setAllowKeys(false);
+        setEditMode(true);
+      }}
+    >
       <StyledTimer>
         {timers[curTimer] - elapsed < 0
           ? "00:00"

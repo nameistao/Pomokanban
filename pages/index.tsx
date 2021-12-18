@@ -73,10 +73,26 @@ const Home: NextPage = () => {
 
   const [allowKeys, setAllowKeys] = useState(true);
 
+  const [editMode, setEditMode] = useState(false);
+
   //KEY PRESS EFFECTS
   const pressedR = useKeyPress("r");
   const pressedS = useKeyPress("s");
   const pressedSpace = useKeyPress(" ");
+  const pressedEnter = useKeyPress("Enter");
+
+  useEffect(() => {
+    if (pressedEnter && editTimerRef.current !== null) {
+      if (editTimerRef.current.value === "") {
+        setEditMode(false);
+        setAllowKeys(true);
+      } else {
+        setTimers({ ...timers, [curTimer]: editTimerRef.current.value * 60 });
+        setEditMode(false);
+        setAllowKeys(true);
+      }
+    }
+  }, [pressedEnter]);
 
   useEffect(() => {
     if (pressedR && allowKeys) {
@@ -163,6 +179,8 @@ const Home: NextPage = () => {
   //REFS
   const audio = useRef(null);
 
+  const editTimerRef = useRef(null);
+
   //HANDLERS
   const startStopHandler = () => {
     if (startStop === "START") {
@@ -239,6 +257,9 @@ const Home: NextPage = () => {
           setTaskData,
           allowKeys,
           setAllowKeys,
+          editMode,
+          setEditMode,
+          editTimerRef,
         }}
       >
         <StyledMain color={theme.dark}>
