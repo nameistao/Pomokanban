@@ -67,7 +67,22 @@ const Timer = () => {
     editMode,
     setEditMode,
     editTimerRef,
+    setTimers,
   } = useContext(Context);
+
+  const onBlurHandler = () => {
+    if (editTimerRef.current.value === "") {
+      setEditMode(false);
+      setAllowKeys(true);
+    } else {
+      setTimers({
+        ...timers,
+        [curTimer]: Math.max(editTimerRef.current.value * 60, 60),
+      });
+      setEditMode(false);
+      setAllowKeys(true);
+    }
+  };
 
   return editMode ? (
     <EditModeWrapper>
@@ -76,7 +91,7 @@ const Timer = () => {
         min="1"
         placeholder={String(Math.floor(timers[curTimer] / 60))}
         ref={editTimerRef}
-        //onBlur={() => alert("here")}
+        onBlur={onBlurHandler}
         autoFocus
       ></EditModeInput>
     </EditModeWrapper>
