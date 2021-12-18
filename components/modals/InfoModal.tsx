@@ -90,7 +90,7 @@ const InfoModal = () => {
           </b>
         </p>
         <p>- Click the timer to edit timer</p>
-        <p>- Click "Add To Do" to add a task</p>
+        <p>- Click &quot;Add To Do&quot; to add a task</p>
         <p>
           -{" "}
           <b>
