@@ -5,9 +5,9 @@ import { useState, useContext, useRef } from "react";
 import Times from "components/icons/Times";
 import Context from "components/Context";
 
-const StyledSettingsModal = styled.section`
+const StyledSettingsModal = styled.section<{ innerHeight: number }>`
   width: 60vw;
-  height: 89vh;
+  height: calc(${(props) => String(props.innerHeight) + "px"} * 0.89);
   background-color: ${(props) => props.color};
   margin: auto;
   border-radius: 6px;
@@ -117,7 +117,8 @@ const HorizontalLine = styled.hr`
 `;
 
 const SettingsModal = () => {
-  const { theme, setShowModal, timers, setTimers } = useContext(Context);
+  const { theme, setShowModal, timers, setTimers, innerHeight } =
+    useContext(Context);
 
   const [pomodoroInput, setPomodoroInput] = useState(timers.pomodoro / 60);
   const [shortBreakInput, setShortBreakInput] = useState(
@@ -151,7 +152,7 @@ const SettingsModal = () => {
   };
 
   return (
-    <StyledSettingsModal color={theme.light}>
+    <StyledSettingsModal color={theme.light} innerHeight={innerHeight}>
       <StyledTopRow>
         <StyledModalTitle>Settings</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>

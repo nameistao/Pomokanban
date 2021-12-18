@@ -8,12 +8,14 @@ import StartStopButton from "./timerBoxComponents/StartStopButton";
 import Context from "./Context";
 import Repeat from "components/icons/Repeat";
 
-const StyledSection = styled.section`
-  height: 32.5vh;
+const StyledSection = styled.section<{ innerHeight: number }>`
+  height: calc(${(props) => String(props.innerHeight) + "px"} * 0.325);
   width: 60vw;
   padding: 0 4vw 0 4vw;
   color: #fff;
-  margin: 0 auto 2vh auto;
+  margin-left: auto; 
+  margin-right auto;
+  margin-bottom: calc(${(props) => String(props.innerHeight) + "px"} * 0.02);
   background-color: ${(props) => props.color};
   border-radius: 6px;
   display: flex;
@@ -28,10 +30,10 @@ const StyledSection = styled.section`
 `;
 
 const TimerBox = () => {
-  const { theme } = useContext(Context);
+  const { theme, innerHeight } = useContext(Context);
 
   return (
-    <StyledSection color={theme.light}>
+    <StyledSection color={theme.light} innerHeight={innerHeight}>
       <ButtonGroup />
       <Timer />
       <StartStopButton />

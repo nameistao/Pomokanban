@@ -14,9 +14,9 @@ const Container = styled.div`
   height: 85%;
 `;
 
-const StyledSection = styled.section<{ color: string }>`
+const StyledSection = styled.section<{ color: string; innerHeight: number }>`
   width: 60vw;
-  height: 54.5vh;
+  height: calc(${(props) => String(props.innerHeight) + "px"} * 0.545);
   background-color: ${(props) => props.color};
   margin: 0 auto 0 auto;
   border-radius: 6px;
@@ -62,7 +62,7 @@ const AddInput = styled.input`
 
 const Tasks = () => {
   //CONTEXT
-  const { taskData, setTaskData, theme, allowKeys, setAllowKeys } =
+  const { taskData, setTaskData, theme, setAllowKeys, innerHeight } =
     useContext(Context);
 
   //STATES
@@ -184,7 +184,7 @@ const Tasks = () => {
 
   return (
     <NoSSR>
-      <StyledSection color={theme.light}>
+      <StyledSection color={theme.light} innerHeight={innerHeight}>
         <DragDropContext onDragEnd={onDragEndHandler}>
           <Container>
             {taskData.columnOrder.map((columnId) => {

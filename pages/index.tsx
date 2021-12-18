@@ -18,17 +18,14 @@ import useKeyPress from "hooks/useKeyPress";
 
 const StyledMain = styled.main<{ color: string; innerHeight: number }>`
   height: 100vh;
+  height: ${(props) =>
+    typeof props.innerHeight !== "undefined"
+      ? String(props.innerHeight) + "px"
+      : "100vh"};
   width: 100vw;
   background-color: ${(props) => props.color};
   transition: background-color 0.7s ease;
   font-family: Arial;
-
-  @media (max-width: 1024px) {
-    height: ${(props) =>
-      typeof props.innerHeight !== "undefined"
-        ? String(props.innerHeight) + "px"
-        : "100vh"};
-  }
 `;
 
 const Home: NextPage = () => {
@@ -276,6 +273,7 @@ const Home: NextPage = () => {
           editMode,
           setEditMode,
           editTimerRef,
+          innerHeight,
         }}
       >
         <StyledMain color={theme.dark} innerHeight={innerHeight}>

@@ -1,12 +1,17 @@
+//packages
 import styled from "styled-components";
-
+import { useContext } from "react";
+//components
 import Title from "components/Title";
 import ButtonGroup from "components/ButtonGroup";
+import Context from "./Context";
 
-const StyledSection = styled.section`
+const StyledSection = styled.section<{ innerHeight: number }>`
   width: 60vw;
-  height: 2.5vh;
-  margin: 0 auto 2vh auto;
+  height: calc(${(props) => String(props.innerHeight) + "px"} * 0.025);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: calc(${(props) => String(props.innerHeight) + "px"} * 0.02);
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -21,8 +26,10 @@ const StyledSection = styled.section`
 `;
 
 const Header = () => {
+  const { innerHeight } = useContext(Context);
+
   return (
-    <StyledSection>
+    <StyledSection innerHeight={innerHeight}>
       <Title />
       <ButtonGroup />
     </StyledSection>

@@ -5,9 +5,9 @@ import { useContext } from "react";
 import Times from "components/icons/Times";
 import Context from "components/Context";
 
-const StyledInfoModal = styled.section`
+const StyledInfoModal = styled.section<{ innerHeight: number }>`
   width: 60vw;
-  height: 89vh;
+  height: calc(${(props) => String(props.innerHeight) + "px"} * 0.89);
   background-color: ${(props) => props.color};
   margin: auto;
   border-radius: 6px;
@@ -68,10 +68,10 @@ const HorizontalLine = styled.hr`
 `;
 
 const InfoModal = () => {
-  const { theme, setShowModal } = useContext(Context);
+  const { theme, setShowModal, innerHeight } = useContext(Context);
 
   return (
-    <StyledInfoModal color={theme.light}>
+    <StyledInfoModal color={theme.light} innerHeight={innerHeight}>
       <StyledTopRow>
         <StyledModalTitle>Information</StyledModalTitle>
         <StyledTimesButton onClick={() => setShowModal("")}>
