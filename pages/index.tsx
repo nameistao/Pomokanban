@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import { useEffect, useState, useRef } from "react";
 import Head from "next/head";
 import styled from "styled-components";
-import useSound from "use-sound";
 //Components
 import Context from "components/Context";
 import ProgressBar from "components/ProgressBar";
