@@ -20,13 +20,13 @@ const StyledTimerWrapper = styled.section`
 
 const StyledTimer = styled.div`
   width: 100%;
-  font-size: 10rem;
+  font-size: 8rem;
 `;
 
 const EditModeWrapper = styled.section`
   width: 100%;
   height: 50%;
-  font-size: 10rem;
+  font-size: 8rem;
   text-align: center;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@ const EditModeInput = styled.input`
   border-radius: 4px;
   outline: none;
   color: #fff;
-  font-size: 10rem;
+  font-size: 8rem;
   ::placeholder {
     color: #fff;
     opacity: 50%;
