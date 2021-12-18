@@ -119,6 +119,12 @@ const Home: NextPage = () => {
 
   //EFFECTS
   useEffect(() => {
+    if (showModal !== "") {
+      setAllowKeys(false);
+    }
+  }, [showModal]);
+
+  useEffect(() => {
     setProgress((elapsed / timers[curTimer]) * 100);
     if (elapsed === timers[curTimer]) {
       audio.current.play();
