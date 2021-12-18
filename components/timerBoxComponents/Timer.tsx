@@ -10,15 +10,17 @@ const StyledTimerWrapper = styled.section`
   display: flex;
   align-items: center;
   text-align: center;
+  border-radius: 4px;
+  padding-top: 6px;
   :hover {
     cursor: pointer;
+    border: #fff 2px solid;
   }
 `;
 
 const StyledTimer = styled.div`
   width: 100%;
   font-size: 10rem;
-  margin-top: 12px;
 `;
 
 const EditModeWrapper = styled.section`
