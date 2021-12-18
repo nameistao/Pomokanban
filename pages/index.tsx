@@ -24,7 +24,9 @@ const StyledMain = styled.main<{ color: string; innerHeight: number }>`
   font-family: Arial;
 
   @media (max-width: 1280px) {
-    height: ${typeof innerHeight !== "undefined" && String(innerHeight) + "px"};
+    height: ${typeof innerHeight !== "undefined"
+      ? String(innerHeight) + "px"
+      : "100vh"};
   }
 `;
 
