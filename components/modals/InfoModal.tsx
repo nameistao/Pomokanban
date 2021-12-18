@@ -14,6 +14,12 @@ const StyledInfoModal = styled.section`
   display: flex;
   align-items: end;
   flex-direction: column;
+  @media (max-width: 1024px) {
+    width: 90vw;
+  }
+  @media (max-width: 480px) {
+    width: 95vw;
+  }
 `;
 
 const StyledTopRow = styled.div`

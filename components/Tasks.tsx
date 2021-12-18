@@ -15,12 +15,20 @@ const Container = styled.div`
 `;
 
 const StyledSection = styled.section<{ color: string }>`
-  width: 50vw;
+  width: 60vw;
   height: 54.5vh;
   background-color: ${(props) => props.color};
   margin: 0 auto 0 auto;
   border-radius: 6px;
   transition: background-color 0.7s ease;
+
+  @media (max-width: 1024px) {
+    width: 90vw;
+  }
+
+  @media (max-width: 480px) {
+    width: 95vw;
+  }
 `;
 
 const AddRow = styled.div`
