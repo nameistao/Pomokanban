@@ -71,6 +71,7 @@ const Timer = () => {
         min="1"
         placeholder={String(Math.floor(timers[curTimer] / 60))}
         ref={editTimerRef}
+        autoFocus
       ></EditModeInput>
     </EditModeWrapper>
   ) : (
