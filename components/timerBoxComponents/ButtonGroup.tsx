@@ -13,7 +13,7 @@ const StyledTimerOptions = styled.section`
 
 const StyledButtonGroup = styled.div`
   height: 100%;
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: center;
   margin: auto;
