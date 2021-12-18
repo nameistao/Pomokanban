@@ -87,7 +87,10 @@ const Home: NextPage = () => {
         setEditMode(false);
         setAllowKeys(true);
       } else {
-        setTimers({ ...timers, [curTimer]: editTimerRef.current.value * 60 });
+        setTimers({
+          ...timers,
+          [curTimer]: Math.max(editTimerRef.current.value * 60, 60),
+        });
         setEditMode(false);
         setAllowKeys(true);
       }
