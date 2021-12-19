@@ -247,6 +247,10 @@ const Home: NextPage = () => {
           name="description"
           content="Pomokanban is a free and customizable productivity app that includes both a pomodoro timer and kanban board!"
         />
+
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon.png"></link>
+        <meta name="theme-color" content="#fff" />
       </Head>
       <audio className="audio-element" ref={audio}>
         <source src="/cuckoo-clock.mp3"></source>

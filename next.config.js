@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const withPWA = require("next-pwa");
 
 const securityHeaders = [
   {
@@ -27,7 +28,10 @@ const securityHeaders = [
   },
 ];
 
-module.exports = {
+module.exports = withPWA({
+  pwa: {
+    dest: "public",
+  },
   reactStrictMode: true,
   i18n: {
     locales: ["en"],
@@ -42,4 +46,4 @@ module.exports = {
       },
     ];
   },
-};
+});
