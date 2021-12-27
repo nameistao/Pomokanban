@@ -36,12 +36,15 @@ const AddRow = styled.div`
   height: 15%;
   display: flex;
   justify-content: space-evenly;
+  border: none;
+  outline: none;
 `;
 
 const AddInput = styled.input`
   height: 75%;
   width: 75%;
   border: none;
+  outline: none;
   border-bottom: 2px solid #fff;
   :focus {
     outline: none;
