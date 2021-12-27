@@ -68,13 +68,19 @@ const HorizontalLine = styled.hr`
 `;
 
 const InfoModal = () => {
-  const { theme, setShowModal, innerHeight } = useContext(Context);
+  const { theme, setShowModal, innerHeight, setAllowKeys } =
+    useContext(Context);
 
   return (
     <StyledInfoModal color={theme.light} innerHeight={innerHeight}>
       <StyledTopRow>
         <StyledModalTitle>Information</StyledModalTitle>
-        <StyledTimesButton onClick={() => setShowModal("")}>
+        <StyledTimesButton
+          onClick={() => {
+            setShowModal("");
+            setAllowKeys(true);
+          }}
+        >
           <Times height={"100%"} color={"#fff"} />
         </StyledTimesButton>
       </StyledTopRow>
