@@ -18,10 +18,12 @@ import useKeyPress from "hooks/useKeyPress";
 
 const StyledMain = styled.main<{ color: string; innerHeight: number }>`
   height: 100vh;
-  height: ${(props) =>
-    typeof props.innerHeight !== "undefined"
-      ? String(props.innerHeight) + "px"
-      : "100vh"};
+  @media (max-width: 1024px) {
+    height: ${(props) =>
+      typeof props.innerHeight !== "undefined"
+        ? String(props.innerHeight) + "px"
+        : "100vh"};
+  }
   width: 100vw;
   background-color: ${(props) => props.color};
   transition: background-color 0.7s ease;
@@ -159,7 +161,7 @@ const Home: NextPage = () => {
       startStopHandler();
       setElapsed(0);
     }
-  }, [elapsed, curTimer]);
+  }, [elapsed, curTimer, timers]);
 
   //set taskData and timers in localStorage
   useEffect(() => {
@@ -187,6 +189,9 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     localStorage.setItem("timers", JSON.stringify(timers));
+    if (startStop === "STOP") {
+      startStopHandler();
+    }
   }, [timers]);
 
   //REFS
