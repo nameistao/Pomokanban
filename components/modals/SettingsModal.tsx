@@ -117,7 +117,7 @@ const HorizontalLine = styled.hr`
 `;
 
 const SettingsModal = () => {
-  const { theme, setShowModal, timers, setTimers, innerHeight } =
+  const { theme, setShowModal, timers, setTimers, innerHeight, setAllowKeys } =
     useContext(Context);
 
   const [pomodoroInput, setPomodoroInput] = useState(timers.pomodoro / 60);
@@ -137,6 +137,7 @@ const SettingsModal = () => {
       longBreak: Math.max(6, longBreakRef.current.value * 60),
     });
     setShowModal("");
+    setAllowKeys(true);
   };
 
   const pomodoroChangeHandler = (e) => {
@@ -155,7 +156,12 @@ const SettingsModal = () => {
     <StyledSettingsModal color={theme.light} innerHeight={innerHeight}>
       <StyledTopRow>
         <StyledModalTitle>Settings</StyledModalTitle>
-        <StyledTimesButton onClick={() => setShowModal("")}>
+        <StyledTimesButton
+          onClick={() => {
+            setShowModal("");
+            setAllowKeys(true);
+          }}
+        >
           <Times height={"100%"} color={"#fff"} />
         </StyledTimesButton>
       </StyledTopRow>
