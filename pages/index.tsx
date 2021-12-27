@@ -159,7 +159,7 @@ const Home: NextPage = () => {
       startStopHandler();
       setElapsed(0);
     }
-  }, [elapsed, curTimer]);
+  }, [elapsed, curTimer, timers]);
 
   //set taskData and timers in localStorage
   useEffect(() => {
@@ -187,6 +187,9 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     localStorage.setItem("timers", JSON.stringify(timers));
+    if (startStop === "STOP") {
+      startStopHandler();
+    }
   }, [timers]);
 
   //REFS
