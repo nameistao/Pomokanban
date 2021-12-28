@@ -191,6 +191,7 @@ const Home: NextPage = () => {
     localStorage.setItem("timers", JSON.stringify(timers));
     if (startStop === "STOP") {
       startStopHandler();
+      startStopHandler("START");
     }
   }, [timers]);
 
@@ -200,8 +201,8 @@ const Home: NextPage = () => {
   const editTimerRef = useRef(null);
 
   //HANDLERS
-  const startStopHandler = () => {
-    if (startStop === "START") {
+  const startStopHandler = (forceStartStop = null) => {
+    if (forceStartStop === "START" || startStop === "START") {
       setStartStop("STOP");
 
       //get end time given current timer
